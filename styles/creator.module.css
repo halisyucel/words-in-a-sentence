@@ -1,0 +1,18 @@
+.creator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-primary);
+    position: fixed;
+    bottom: 0;
+    font-family: var(--signika);
+    padding: .5rem;
+    font-size: .8rem;
+}
+.creator > a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+}
+.creator > a:hover {
+    color: var(--color-text-primary);
+}

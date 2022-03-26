@@ -1,5 +1,7 @@
 import { queryScheme } from '../../lib/api/global';
 
+// TODO anasayfaya recaptcha ekelenecek ve bütün api istekleri ondan geçecek
+
 export default async (req, res) => {
 	const { error, value } = queryScheme.validate(req.query);
 	if (error)
