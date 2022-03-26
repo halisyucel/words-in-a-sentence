@@ -1,1 +1,1 @@
-## word-in-sentences-tr
+## words-in-a-sentence-tr
