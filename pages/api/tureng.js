@@ -3,6 +3,7 @@ import { getTurengData } from '../../lib/api/tureng';
 
 // TODO anasayfaya recaptcha ekelenecek ve bütün api istekleri ondan geçecek
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
 	const { error, value } = queryScheme.validate(req.query);
 	if (error)
