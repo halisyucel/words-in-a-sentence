@@ -6,7 +6,7 @@ const nextConfig = {
 		CREATOR: 'halis yücel',
 		CREATOR_WEB_SITE: 'https://halisyucel.me',
 		REPO_URL: 'https://github.com/',
-		API_URL: 'http://localhost:3000/api',
+		API_URL: 'https://playful-creponne-6a0e53.netlify.app/api',
 	},
 }
 
