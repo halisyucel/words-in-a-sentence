@@ -1,7 +1,9 @@
-@import "globals.css";
+@import "global.css";
 @import "reset.css";
 @import "header.css";
 @import "layout.css";
 @import "input.css";
 @import "title.css";
 @import "toolbar.css";
+@import "tureng-results.css";
+@import "pagination.css";

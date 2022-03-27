@@ -5,7 +5,8 @@ const nextConfig = {
 	env: {
 		CREATOR: 'halis yücel',
 		CREATOR_WEB_SITE: 'https://halisyucel.me',
-		REPO_URL: 'https://github.com/'
+		REPO_URL: 'https://github.com/',
+		API_URL: 'http://localhost:3000/api',
 	},
 }
 
