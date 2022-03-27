@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Signika:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Signika:wght@300;400;500;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
 :root {
     --color-text-primary: #ffffff;
     --color-text-secondary: #000000;
     --color-background-primary: #2a2a35;
     --color-background-secondary: #dddddd;
+    --color-background-tertiary: #454545;
+    --color-tureng-red: #c81d27;
     --pacifico: 'Pacifico', cursive;
     --signika: 'Signika', sans-serif;
+    --work-sans: 'Work Sans', sans-serif;
 }
 body {
     background-color: var(--color-background-primary);
