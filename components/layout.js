@@ -1,26 +1,26 @@
 import React from 'react';
 import Header from './header';
 import PropTypes from 'prop-types';
-import styles from '../styles/layout.module.css';
 import Creator from './creator';
 
-const Layout = ({ children, style }) => {
+const Layout = ({ children, style, header }) => {
 	return (
-		<div style={style} className={styles.layout}>
-			<Header />
-			{children}
-			<Creator />
+		<div className={'layout'}>
+			{header && <Header />}
+			<div style={style} className={'layout__body'}>{children}</div>
 		</div>
 	);
 };
 
 Layout.propTypes = {
 	children: PropTypes.node.isRequired,
-	style: PropTypes.object
+	style: PropTypes.object,
+	header: PropTypes.bool,
 };
 
 Layout.defaultProps = {
-	style: {}
+	style: {},
+	header: true
 };
 
 export default Layout;

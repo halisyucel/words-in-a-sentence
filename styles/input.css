@@ -20,6 +20,11 @@
     font-family: var(--signika);
     z-index: 99;
 }
+.search__input_small {
+    height: 2.5rem;
+    padding: 0 2rem 0 1rem;
+    font-size: 1.1rem;
+}
 .search__icon {
     position: absolute;
     top: 0;
@@ -33,6 +38,11 @@
     cursor: pointer;
     z-index: 100;
 }
+.search__icon_small {
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.1rem;
+}
 .search__placeholder {
     cursor: text;
     user-select: none;
@@ -42,7 +52,7 @@
     display: flex;
     align-items: flex-end;
     font-size: 1.5rem;
-    background-color: var(--color-background-secondary);
+    background-color: var(--color-background-primary);
     padding: 0 .25rem;
     color: var(--color-text-primary);
     opacity: 0.5;
@@ -50,8 +60,17 @@
     z-index: 100;
     transition: opacity 0.2s ease-in-out, font-size 0.2s ease-in-out, top 0.2s ease-in-out;
 }
+.search__placeholder_small {
+    font-size: 1.1rem;
+    top: calc(50% - .55rem);
+    left: calc(1.1rem + 4px - .25rem);
+}
 .search__placeholder__focus {
     opacity: 1;
     font-size: .9rem;
     top: -0.4rem;
+}
+.search__placeholder__focus_small {
+    font-size: .7rem;
+    top: -0.2rem;
 }

@@ -1,8 +1,0 @@
-.layout {
-    background-color: var(--color-background-secondary);
-    width: 60rem;
-    height: 100%;
-    color: var(--color-text-primary);
-    display: flex;
-    flex-flow: column;
-}

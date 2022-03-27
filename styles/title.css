@@ -1,0 +1,26 @@
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+}
+.title_small {
+    font-size: 2rem;
+}
+.title > img {
+    height: 2rem;
+    margin-left: 1rem;
+    border-radius: 5px;
+}
+.title > a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.title > a:hover {
+    color: #ffffff;
+}
+.title_small > img {
+    height: 1.5rem;
+}

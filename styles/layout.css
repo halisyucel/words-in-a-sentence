@@ -1,0 +1,15 @@
+.layout {
+    background-color: var(--color-background-primary);
+    width: 60rem;
+    height: 100%;
+    color: var(--color-text-primary);
+    display: flex;
+    flex-flow: column;
+}
+.layout__body {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    box-sizing: border-box;
+}

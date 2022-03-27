@@ -1,45 +1,58 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import styles from '../styles/input.module.css';
 import { FiSearch } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 
-const Input = ({ placeholder, onSubmit }) => {
+const Input = ({ placeholder, onSubmit, size, style }) => {
+	const _style = (className) => {
+		switch (size) {
+			case 'small':
+				return `${className} ${className + '_small'}`;
+			default:
+				return className;
+		}
+	}
 	const [inputId, setInputId] = useState('');
 	const [value, setValue] = useState('');
 	const [focus, setFocus] = useState(false);
-	const isFocus = useCallback(() => {
-		if (value.trim() !== '')
-			return true;
-		else
-			return focus;
-	}, [ value, focus ]);
-	const submit = useCallback(() => {
-		if (value.trim() !== '')
+	const isFocus = useCallback(() => value.trim() !== '' ? true : focus, [ value, focus ]);
+	const submit = useCallback((inlineValue=null) => {
+		if (inlineValue !== null && typeof inlineValue === 'string')
+			onSubmit(inlineValue);
+		else if (value.trim() !== '')
 			onSubmit(value);
-	}, [ value, onSubmit ]);
+	}, [ value , onSubmit ]);
 	useEffect(() => {
 		setInputId(`input-${Math.floor(Math.random() * 10000)}`);
 	}, []);
+	useEffect(() => {
+		if (inputId !== '')
+			setValue(document.getElementById(inputId).value);
+	}, [ inputId ]);
 	return (
-		<div className={styles.search}>
+		<div className={_style('search')} style={style}>
 			<input
 				id={inputId === '' ? null : inputId}
-				value={value}
-				className={styles.search__input}
+				defaultValue={''}
+				className={_style('search__input')}
 				type={'text'}
 				spellCheck={false}
-				onChange={(e) => setValue(e.target.value)}
 				onFocus={() => setFocus(true)}
-				onBlur={() => setFocus(false)}
+				onKeyDown={(e) => (e.key === 'Enter') &&
+					submit(document.getElementById(inputId).value.trim())}
+				onBlur={() => {
+					setValue(document.getElementById(inputId).value);
+					setFocus(false)
+				}}
 			/>
 			<div
 				onClick={() => document.getElementById(inputId).focus()}
-				className={`${styles.search__placeholder} ${isFocus() ? styles.search__placeholder__focus : ''}`}
+				className={`${_style('search__placeholder')} ${isFocus() ? 
+					_style('search__placeholder__focus') : ''}`}
 			>
 				{placeholder}
 			</div>
 			<div
-				className={styles.search__icon}
+				className={_style('search__icon')}
 				onClick={submit}
 			>
 				<FiSearch />
@@ -50,7 +63,15 @@ const Input = ({ placeholder, onSubmit }) => {
 
 Input.propTypes = {
 	placeholder: PropTypes.string,
-	onSubmit: PropTypes.func
+	onSubmit: PropTypes.func,
+	size: PropTypes.string,
+	style: PropTypes.object
+};
+
+Input.defaultProps = {
+	placeholder: 'search a word',
+	size: 'normal',
+	style: {}
 };
 
 export default Input;

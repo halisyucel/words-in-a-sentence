@@ -1,21 +1,25 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styles from '../styles/home.module.css';
 import Layout from '../components/layout';
 import Input from '../components/input';
+import Title from '../components/title';
 
 const Home = () => {
+	const router = useRouter();
 	return (
-		<Layout style={{
-			justifyContent: 'center',
-			alignItems: 'center',
-		}}>
+		<Layout
+			header={false}
+			style={{
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}
+		>
 			<div className={styles.home}>
-				<div className={styles.home__title}>
-					words in a sentence
-					<img src={'/flag.svg'} alt={'TR'}/>
-				</div>
+				<Title />
 				<Input
 					placeholder={'search a word'}
+					onSubmit={(value) => router.push(`/word/${value}`)}
 				/>
 			</div>
 		</Layout>
