@@ -9,12 +9,12 @@ const TurengResults = ({ word }) => {
 	const [page, setPage] = useState(1);
 	const [seenResults, setSeenResults] = useState([ ...results.slice(0, 10) ]);
 	useEffect(() => {
+		setLoading(true);
+		setResults([]);
+	}, [word]);
+	useEffect(() => {
 		setSeenResults([ ...results.slice((page - 1) * 10, ((page - 1) * 10) + 10) ]);
 	}, [page, results]);
-	useEffect(() => {
-		setPage(1);
-		setSeenResults([ ...results.slice(0, 10) ]);
-	}, [results, word]);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(async () => {
 		const turengResponse = await axios({
@@ -22,6 +22,7 @@ const TurengResults = ({ word }) => {
 			url: `/api/tureng`,
 			params: { word }
 		});
+		setPage(1);
 		setResults(turengResponse.data.data);
 		setLoading(false);
 	}, [word]);
