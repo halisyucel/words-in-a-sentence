@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from './pagination';
+import axios from 'axios';
 
-const TurengResults = ({ word, results }) => {
+const TurengResults = ({ word }) => {
+	const [loading, setLoading] = useState(true);
+	const [results, setResults] = useState([]);
 	const [page, setPage] = useState(1);
 	const [seenResults, setSeenResults] = useState([ ...results.slice(0, 10) ]);
 	useEffect(() => {
@@ -12,12 +15,23 @@ const TurengResults = ({ word, results }) => {
 		setPage(1);
 		setSeenResults([ ...results.slice(0, 10) ]);
 	}, [results, word]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	useEffect(async () => {
+		const turengResponse = await axios({
+			method: 'get',
+			url: `/api/tureng`,
+			params: { word }
+		});
+		setResults(turengResponse.data.data);
+		setLoading(false);
+	}, [word]);
 	return (
 		<div className={'tureng_results'}>
 			<div className={'tureng_results__header'}>
 				<a href={`https://tureng.com/tr/turkce-ingilizce/${word}`} target={'_blank'} rel={'noreferrer'}>
 					tureng.com
-					<span>{results.length === 0 ? 'no' : results.length} results found</span>
+					{loading ? <span>loading...</span> :
+						<span>{results.length === 0 ? 'no' : results.length} results found</span>}
 				</a>
 				<Pagination
 					value={page}
@@ -40,8 +54,7 @@ const TurengResults = ({ word, results }) => {
 };
 
 TurengResults.propTypes = {
-	word: PropTypes.string.isRequired,
-	results: PropTypes.array.isRequired
+	word: PropTypes.string.isRequired
 };
 
 export default TurengResults;

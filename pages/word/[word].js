@@ -4,33 +4,17 @@ import Toolbar from '../../components/toolbar';
 import axios from 'axios';
 import TurengResults from '../../components/tureng-results';
 
-const Word = ({ word, tureng, vip }) => {
+const Word = ({ word }) => {
 	return (
 		<Layout style={{ padding: '1rem' }}>
 			<Toolbar word={word} />
-			<TurengResults word={word} results={tureng} />
+			<TurengResults word={word} />
 		</Layout>
 	);
 };
 
 const getServerSideProps = async ({ params }) => {
-	const turengResponse = await axios({
-		method: 'get',
-		url: `${process.env.API_URL}/tureng`,
-		params: { word: params.word }
-	});
-	const vipResponse = await axios({
-		method: 'get',
-		url: `${process.env.API_URL}/vip`,
-		params: { word: params.word }
-	});
-	return {
-		props: {
-			word: params.word,
-			tureng: turengResponse.data.status ? turengResponse.data.data : [],
-			vip: vipResponse.data.status ? vipResponse.data.data : []
-		},
-	};
+	return { props: { word: params.word } };
 };
 
 export default Word;
