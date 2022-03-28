@@ -14,3 +14,14 @@
     text-decoration: none;
     font-size: .8rem;
 }
+@media (max-width: 768px) {
+    .home {
+        width: 90%;
+    }
+    .home > .title {
+        font-size:2rem;
+    }
+    .home > .title > img {
+        height: 1.5rem;
+    }
+}
