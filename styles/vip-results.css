@@ -26,6 +26,7 @@
     display: flex;
     padding: .65rem;
     border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
 }
 .vip_results__result:nth-child(even) {
     background-color: transparent;
@@ -45,4 +46,36 @@
 .vip_results__result__translation {
     flex: 1;
     padding-left: .5rem;
+    display: flex;
+}
+.vip_results__result__translation__text {
+    flex: 1;
+}
+.vip_results__result__translation__translated {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: .6rem;
+    padding-top: .25rem;
+    font-size: 1rem;
+    width: 1rem;
+    color: var(--color-text-primary);
+}
+@media (max-width: 768px) {
+    .vip_results__header__number {
+        display: none;
+    }
+    .vip_results__result {
+        flex-flow: column;
+    }
+    .vip_results__result__sentence {
+        width: 100%;
+        padding-right: 0;
+    }
+    .vip_results__result__translation {
+        width: 100%;
+        padding-left: 0;
+        color: var(--color-vip-text);
+        margin-top: .25rem;
+    }
 }

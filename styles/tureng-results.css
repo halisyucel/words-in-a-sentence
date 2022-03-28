@@ -26,6 +26,7 @@
     display: flex;
     padding: .65rem;
     border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
 }
 .tureng_results__result:nth-child(even) {
     background-color: transparent;
@@ -50,4 +51,12 @@
 }
 .tureng_results__result__turkish {
     flex: 1;
+}
+@media (max-width: 768px) {
+    .tureng_results__header__number {
+        display: none;
+    }
+    .tureng_results__result__category {
+        display: none;
+    }
 }

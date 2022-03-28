@@ -26,7 +26,8 @@ const TurengResults = ({ word }) => {
 				<a href={`https://tureng.com/tr/turkce-ingilizce/${word}`} target={'_blank'} rel={'noreferrer'}>
 					tureng.com
 					{loading ? <span>loading...</span> :
-						<span>{results.length === 0 ? 'no' : results.length} results found</span>}
+					(results.length === 0 ? <span>no results found</span> :
+						<span className={'tureng_results__header__number'}>{`${results.length} results found`}</span>)}
 				</a>
 				<Pagination
 					value={page}
