@@ -1,7 +1,7 @@
-.vip_results {
+.sentence_results {
     margin-bottom: 1.5rem;
 }
-.vip_results__header {
+.sentence_results__header {
     background-color: var(--color-vip-blue);
     padding: 1rem;
     font-family: var(--pacifico);
@@ -10,16 +10,16 @@
     justify-content: space-between;
     align-items: center;
 }
-.vip_results__header > a {
+.sentence_results__header > a {
     color: var(--color-text-primary);
     text-decoration: none;
 }
-.vip_results__header > a > span {
+.sentence_results__header > a > span {
     font-family: var(--work-sans);
     font-size: .7rem;
     margin-left: 1rem;
 }
-.vip_results__result {
+.sentence_results__result {
     font-family: var(--work-sans);
     line-height: 1.2rem;
     font-weight: 300;
@@ -28,30 +28,30 @@
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
 }
-.vip_results__result:nth-child(even) {
+.sentence_results__result:nth-child(even) {
     background-color: transparent;
     border-left: 4px solid var(--color-background-tertiary);
     border-right: 4px solid var(--color-background-tertiary);
 }
-.vip_results__result:nth-last-child(1) {
+.sentence_results__result:nth-last-child(1) {
     border-bottom: 4px solid var(--color-background-tertiary);
 }
-.vip_results__result:nth-child(odd) {
+.sentence_results__result:nth-child(odd) {
     background-color: var(--color-background-tertiary);
 }
-.vip_results__result__sentence {
+.sentence_results__result__sentence {
     flex: 1;
     padding-right: .5rem;
 }
-.vip_results__result__translation {
+.sentence_results__result__translation {
     flex: 1;
     padding-left: .5rem;
     display: flex;
 }
-.vip_results__result__translation__text {
+.sentence_results__result__translation__text {
     flex: 1;
 }
-.vip_results__result__translation__translated {
+.sentence_results__result__translation__translated {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -62,20 +62,20 @@
     color: var(--color-text-primary);
 }
 @media (max-width: 768px) {
-    .vip_results__header__number {
+    .sentence_results__header__number {
         display: none;
     }
-    .vip_results__result {
+    .sentence_results__result {
         flex-flow: column;
     }
-    .vip_results__result__sentence {
+    .sentence_results__result__sentence {
         width: 100%;
         padding-right: 0;
     }
-    .vip_results__result__translation {
+    .sentence_results__result__translation {
         width: 100%;
         padding-left: 0;
-        color: var(--color-vip-text);
+        color: var(--color-translation-text);
         margin-top: .25rem;
     }
 }

@@ -7,7 +7,7 @@ import Loading from './loading';
 
 // TODO bizim kelimelerin altı çizilecek
 
-const VipResults = ({ word }) => {
+const SentenceResults = ({ word, title, url, endpoint, color }) => {
 	const [loading, setLoading] = useState(true);
 	const [results, setResults] = useState([]);
 	const [seenResults, setSeenResults] = useState([]);
@@ -17,7 +17,7 @@ const VipResults = ({ word }) => {
 		setResults([]);
 		axios({
 			method: 'get',
-			url: `/api/vip`,
+			url: endpoint,
 			params: { word }
 		}).then(response => {
 			setResults(response.data.data);
@@ -49,15 +49,16 @@ const VipResults = ({ word }) => {
 		}
 		if (JSON.stringify(translatedSeenResults) !== JSON.stringify(seenResults))
 			setSeenResults(translatedSeenResults);
+		// TODO buraya bir şey eklenecek sayfa değiştirince de sonradan yeniliyor
 	}, [seenResults]);
 	return (
-		<div className={'vip_results'}>
-			<div className={'vip_results__header'}>
-				<a href={`http://vipingilizce.net/kelime/${word}/`} target={'_blank'} rel={'noreferrer'}>
-					vipingilizce.net
+		<div className={'sentence_results'}>
+			<div className={'sentence_results__header'} style={{ backgroundColor: color }}>
+				<a href={url} target={'_blank'} rel={'noreferrer'}>
+					{title}
 					{loading ? <Loading /> :
 						(results.length === 0 ? <span>no results found</span> :
-							<span className={'vip_results__header__number'}>{`${results.length} results found`}</span>)}
+							<span className={'sentence_results__header__number'}>{`${results.length} results found`}</span>)}
 				</a>
 				<Pagination
 					value={page}
@@ -67,13 +68,13 @@ const VipResults = ({ word }) => {
 				/>
 			</div>
 			{seenResults.map((result, index) => (
-				<div key={index} className={'vip_results__result'}>
-					<div className={'vip_results__result__sentence'}>{result.sentence}</div>
-					<div className={'vip_results__result__translation'}>
+				<div key={index} className={'sentence_results__result'}>
+					<div className={'sentence_results__result__sentence'}>{result.sentence}</div>
+					<div className={'sentence_results__result__translation'}>
 						{result.translation === null ? <Loading text={'translating'} /> : <>
-							<div className={'vip_results__result__translation__text'}>{result.translation}</div>
+							<div className={'sentence_results__result__translation__text'}>{result.translation}</div>
 							{result.isTranslated && <a
-								className={'vip_results__result__translation__translated'}
+								className={'sentence_results__result__translation__translated'}
 								href={`https://translate.google.com/`}
 								target={'_blank'}
 								rel={'noreferrer'}
@@ -88,8 +89,12 @@ const VipResults = ({ word }) => {
 	);
 };
 
-VipResults.propTypes = {
-	word: PropTypes.string.isRequired
+SentenceResults.propTypes = {
+	word: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	url: PropTypes.string.isRequired,
+	endpoint: PropTypes.string.isRequired,
+	color: PropTypes.string
 };
 
-export default VipResults;
+export default SentenceResults;
