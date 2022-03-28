@@ -13,3 +13,11 @@
 .header > .search {
     width: 20rem;
 }
+@media (max-width: 768px) {
+    .header > .title {
+        display: none;
+    }
+    .header > .search {
+        flex: 1;
+    }
+}

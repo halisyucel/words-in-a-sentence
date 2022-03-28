@@ -30,3 +30,8 @@
     color: var(--color-text-secondary);
     background-color: var(--color-background-secondary);
 }
+@media (max-width: 768px) {
+    .toolbar__text {
+        font-size: 1.2rem;
+    }
+}

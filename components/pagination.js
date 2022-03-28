@@ -14,7 +14,7 @@ const Pagination = ({ value, onChange, size, total }) => {
 				<BsChevronDoubleLeft />
 			</div>
 			<div
-				className={`pagination__item__chevron ${[1,2].includes(value) && 'disable'}`}
+				className={`pagination__item__chevron pagination__item__chevron__inside ${[1,2].includes(value) && 'disable'}`}
 				onClick={() => ![1,2].includes(value) && onChange(value - 1)}
 			>
 				<BsChevronLeft />
@@ -45,7 +45,7 @@ const Pagination = ({ value, onChange, size, total }) => {
 				{value + 2}
 			</div>))}
 			<div
-				className={`pagination__item__chevron ${[(lastValue - 1), lastValue].includes(value) && 'disable'}`}
+				className={`pagination__item__chevron pagination__item__chevron__inside ${[(lastValue - 1), lastValue].includes(value) && 'disable'}`}
 				onClick={() => ![(lastValue - 1), lastValue].includes(value) && onChange(value + 1)}
 			>
 				<BsChevronRight />

@@ -37,3 +37,8 @@
     cursor: default;
     color: var(--color-background-secondary);
 }
+@media (max-width: 768px) {
+    .pagination__item__chevron__inside {
+        display: none;
+    }
+}
