@@ -7,16 +7,10 @@ const TurengResults = ({ word }) => {
 	const [loading, setLoading] = useState(true);
 	const [results, setResults] = useState([]);
 	const [page, setPage] = useState(1);
-	const [seenResults, setSeenResults] = useState([ ...results.slice(0, 10) ]);
-	useEffect(() => {
-		setLoading(true);
-		setResults([]);
-	}, [word]);
-	useEffect(() => {
-		setSeenResults([ ...results.slice((page - 1) * 10, ((page - 1) * 10) + 10) ]);
-	}, [page, results]);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(async () => {
+		setLoading(true);
+		setResults([]);
 		const turengResponse = await axios({
 			method: 'get',
 			url: `/api/tureng`,
@@ -41,7 +35,7 @@ const TurengResults = ({ word }) => {
 					onChange={(e) => setPage(e)}
 				/>
 			</div>
-			{seenResults.map((result, index) => (
+			{[ ...results.slice((page - 1) * 10, ((page - 1) * 10) + 10) ].map((result, index) => (
 				<div key={index} className={'tureng_results__result'}>
 					<div className={'tureng_results__result__category'}>{result.category}</div>
 					<div className={'tureng_results__result__english'}>

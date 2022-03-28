@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Home = () => {
 	const router = useRouter();
-	const [word, setWord] = useState('');
+	const [word, setWord] = useState('sorry');
 	useEffect(() => {
 		axios({ method: 'get', url: '/api/random' })
 			.then(response => {
@@ -28,7 +28,7 @@ const Home = () => {
 					placeholder={'search a word'}
 					onSubmit={(value) => router.push(`/word/${value}`)}
 				/>
-				<a className={'home__link'} href={`/word/${word}`}>i feel myself luck</a>
+				<a className={'home__link'} href={`/word/${word}`}>i feel myself lucky</a>
 			</div>
 		</Layout>
 	);
