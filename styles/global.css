@@ -6,7 +6,9 @@
     --color-background-secondary: #dddddd;
     --color-background-tertiary: #454545;
     --color-tureng-red: #c81d27;
-    --color-vip-blue: #3469a5;
+    --color-success: #00b300;
+    --color-warning: #ffc107;
+    --color-error: #c81d27;
     --color-translation-text: #68a4e3;
     --pacifico: 'Pacifico', cursive;
     --signika: 'Signika', sans-serif;

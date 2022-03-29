@@ -2,7 +2,6 @@
     margin-bottom: 1.5rem;
 }
 .sentence_results__header {
-    background-color: var(--color-vip-blue);
     padding: 1rem;
     font-family: var(--pacifico);
     font-size: 1.5rem;
@@ -42,6 +41,13 @@
 .sentence_results__result__sentence {
     flex: 1;
     padding-right: .5rem;
+    display: flex;
+}
+.sentence_results__result__sentence__text {
+    flex: 1;
+}
+.sentence_results__result__sentence__text > b {
+    font-weight: 500;
 }
 .sentence_results__result__translation {
     flex: 1;
@@ -51,7 +57,9 @@
 .sentence_results__result__translation__text {
     flex: 1;
 }
-.sentence_results__result__translation__translated {
+.sentence_results__result__translation__translated,
+.sentence_results__result__sentence__copy {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: flex-start;

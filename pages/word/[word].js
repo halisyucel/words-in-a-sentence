@@ -14,6 +14,7 @@ const Word = ({ word }) => {
 				title={'vipingilizce.net'}
 				url={`http://vipingilizce.net/kelime/${word}`}
 				endpoint={'/api/vip'}
+				color={'#3469a5'}
 			/>
 			<SentenceResults
 				word={word}

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@google-cloud/translate": "^6.3.1",
+    "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.1",
     "joi": "^17.6.0",
     "jsdom": "^19.0.0",
@@ -17,7 +18,8 @@
     "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-redux": "^7.2.6"
   },
   "devDependencies": {
     "eslint": "8.11.0",

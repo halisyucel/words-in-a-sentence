@@ -1,11 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Pagination from './pagination';
 import { SiGoogletranslate } from 'react-icons/si';
 import Loading from './loading';
+import { MdContentCopy } from 'react-icons/md';
+import { copyTextToClipboard } from '../lib/helper';
 
-// TODO bizim kelimelerin altı çizilecek
+// TODO - add a button to copy the sentence to the clipboard
+// TODO - add a button to get data from clipboard
+
+
 
 const SentenceResults = ({ word, title, url, endpoint, color }) => {
 	const [loading, setLoading] = useState(true);
@@ -19,12 +24,19 @@ const SentenceResults = ({ word, title, url, endpoint, color }) => {
 			method: 'get',
 			url: endpoint,
 			params: { word }
-		}).then(response => {
-			setResults(response.data.data);
-			setPage(1);
-			setLoading(false);
-		});
-	}, [word]);
+		})
+			.then(response => {
+				setResults(response.data.data);
+				setPage(1);
+				setLoading(false);
+			})
+			.catch(error => {
+				console.log(error);
+				setResults([]);
+				setPage(1);
+				setLoading(false);
+			});
+	}, [endpoint, word]);
 	useEffect(() => {
 		setSeenResults([ ...results.slice((page - 1) * 10, ((page - 1) * 10) + 10) ]);
 	}, [page, results]);
@@ -69,7 +81,19 @@ const SentenceResults = ({ word, title, url, endpoint, color }) => {
 			</div>
 			{seenResults.map((result, index) => (
 				<div key={index} className={'sentence_results__result'}>
-					<div className={'sentence_results__result__sentence'}>{result.sentence}</div>
+					<div className={'sentence_results__result__sentence'}>
+						<div
+							className={'sentence_results__result__sentence__text'}
+							dangerouslySetInnerHTML={{ __html: result.sentence.replaceAll(word, `<b>${word}</b>`)}}
+						/>
+						<div
+							className={'sentence_results__result__sentence__copy'}
+							title={'Copy to clipboard'}
+							onClick={() => copyTextToClipboard(result.sentence)}
+						>
+							<MdContentCopy />
+						</div>
+					</div>
 					<div className={'sentence_results__result__translation'}>
 						{result.translation === null ? <Loading text={'translating'} /> : <>
 							<div className={'sentence_results__result__translation__text'}>{result.translation}</div>
