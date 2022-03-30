@@ -2,21 +2,21 @@ import React from 'react';
 import Layout from '../../components/layout';
 import Toolbar from '../../components/toolbar';
 import TurengResults from '../../components/tureng-results';
-import SentenceResults from '../../components/sentence-results';
+import Sentences from '../../components/sentences';
 
 const Word = ({ word }) => {
 	return (
 		<Layout style={{ padding: '1rem' }}>
 			<Toolbar word={word} />
 			<TurengResults word={word} />
-			<SentenceResults
+			<Sentences
 				word={word}
 				title={'vipingilizce.net'}
 				url={`http://vipingilizce.net/kelime/${word}`}
 				endpoint={'/api/vip'}
 				color={'#3469a5'}
 			/>
-			<SentenceResults
+			<Sentences
 				word={word}
 				title={'yourdictionary.com'}
 				url={`https://sentence.yourdictionary.com/${word}`}
