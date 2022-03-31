@@ -34,13 +34,13 @@ const Sentences = ({ word, title, url, endpoint, color }) => {
 			});
 	}, [endpoint, word]);
 	return (
-		<div className={'sentence_results'}>
-			<div className={'sentence_results__header'} style={{ backgroundColor: color }}>
+		<div className={'sentences'}>
+			<div className={'sentences__header'} style={{ backgroundColor: color }}>
 				<a href={url} target={'_blank'} rel={'noreferrer'}>
 					{title}
 					{loading ? <Loading /> :
 						(results.length === 0 ? <span>no results found</span> :
-							<span className={'sentence_results__header__number'}>{`${results.length} results found`}</span>)}
+							<span className={'sentences__header__number'}>{`${results.length} results found`}</span>)}
 				</a>
 				<Pagination
 					value={page}
@@ -50,7 +50,7 @@ const Sentences = ({ word, title, url, endpoint, color }) => {
 				/>
 			</div>
 			{[ ...results.slice((page - 1) * 10, ((page - 1) * 10) + 10) ].map((result, index) => (
-				<div key={index} className={'sentence_results__result'}>
+				<div key={index} className={'sentences__result'}>
 					<Sentence
 						word={word}
 						text={result.sentence}

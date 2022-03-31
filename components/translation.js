@@ -7,9 +7,9 @@ import axios from 'axios';
 
 const TranslationText = ({ text }) => {
 	return (<>
-		<div className={'sentence_results__result__translation__text'}>{text}</div>
+		<div className={'sentences__result__translation__text'}>{text}</div>
 		<a
-			className={'sentence_results__result__translation__translated'}
+			className={'sentences__result__translation__translated'}
 			href={`https://translate.google.com/`}
 			target={'_blank'}
 			rel={'noreferrer'}
@@ -52,7 +52,7 @@ const Translation = ({ id, sentence, text }) => {
 		}
 	}, [id, sentence, text, translation.text]);
 	return (
-		<div id={id} className={'sentence_results__result__translation'}>
+		<div id={id} className={'sentences__result__translation'}>
 			{text === null ? (translation.loading ?
 				<Loading text={'translating'} /> : <TranslationText text={translation.text} />) : text}
 		</div>

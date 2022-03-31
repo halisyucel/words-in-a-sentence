@@ -1,7 +1,7 @@
-.sentence_results {
+.sentences {
     margin-bottom: 1.5rem;
 }
-.sentence_results__header {
+.sentences__header {
     padding: 1rem;
     font-family: var(--pacifico);
     font-size: 1.5rem;
@@ -9,16 +9,16 @@
     justify-content: space-between;
     align-items: center;
 }
-.sentence_results__header > a {
+.sentences__header > a {
     color: var(--color-text-primary);
     text-decoration: none;
 }
-.sentence_results__header > a > span {
+.sentences__header > a > span {
     font-family: var(--work-sans);
     font-size: .7rem;
     margin-left: 1rem;
 }
-.sentence_results__result {
+.sentences__result {
     font-family: var(--work-sans);
     line-height: 1.2rem;
     font-weight: 300;
@@ -27,38 +27,39 @@
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
 }
-.sentence_results__result:nth-child(even) {
+.sentences__result:nth-child(even) {
     background-color: transparent;
     border-left: 4px solid var(--color-background-tertiary);
     border-right: 4px solid var(--color-background-tertiary);
 }
-.sentence_results__result:nth-last-child(1) {
+.sentences__result:nth-last-child(1) {
     border-bottom: 4px solid var(--color-background-tertiary);
 }
-.sentence_results__result:nth-child(odd) {
+.sentences__result:nth-child(odd) {
     background-color: var(--color-background-tertiary);
 }
-.sentence_results__result__sentence {
+.sentences__result__sentence {
     flex: 1;
     padding-right: .5rem;
     display: flex;
 }
-.sentence_results__result__sentence__text {
+.sentences__result__sentence__text {
     flex: 1;
 }
-.sentence_results__result__sentence__text > b {
+.sentences__result__sentence__text > b {
     font-weight: 500;
 }
-.sentence_results__result__translation {
+.sentences__result__translation {
     flex: 1;
     padding-left: .5rem;
     display: flex;
 }
-.sentence_results__result__translation__text {
+.sentences__result__translation__text {
     flex: 1;
 }
-.sentence_results__result__translation__translated,
-.sentence_results__result__sentence__copy {
+.sentences__result__translation__translated,
+.sentences__result__sentence__copy {
+    user-select: none;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -70,17 +71,17 @@
     color: var(--color-text-primary);
 }
 @media (max-width: 768px) {
-    .sentence_results__header__number {
+    .sentences__header__number {
         display: none;
     }
-    .sentence_results__result {
+    .sentences__result {
         flex-flow: column;
     }
-    .sentence_results__result__sentence {
+    .sentences__result__sentence {
         width: 100%;
         padding-right: 0;
     }
-    .sentence_results__result__translation {
+    .sentences__result__translation {
         width: 100%;
         padding-left: 0;
         color: var(--color-translation-text);

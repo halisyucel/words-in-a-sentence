@@ -3,8 +3,10 @@ import Header from './header';
 import PropTypes from 'prop-types';
 import Notification from './notification';
 import Head from 'next/head';
+import { useSelector } from 'react-redux';
 
 const Layout = ({ children, style, header }) => {
+	const notification = useSelector(state => state.notification);
 	return (
 		<div className={'layout'}>
 			<Head>
@@ -20,7 +22,19 @@ const Layout = ({ children, style, header }) => {
 			</Head>
 			{header && <Header />}
 			<div style={style} className={'layout__body'}>{children}</div>
-			<Notification />
+			{Object.keys(notification).map(key => (
+				<Notification
+					id={key}
+					key={key}
+					visible={notification[key].visible}
+					type={notification[key].type}
+					text={notification[key].text}
+					position={notification[key].position}
+					button={notification[key].button}
+					buttonText={notification[key].buttonText}
+					buttonHref={notification[key].buttonHref}
+				/>
+			))}
 		</div>
 	);
 };

@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 1.5rem;
     left: 1.5rem;
-    max-width: 15rem;
+    max-width: 25rem;
     padding: .5rem;
     background: var(--color-text-secondary);
     border-radius: 3rem;
@@ -30,6 +30,12 @@
 }
 .notification__icon__error {
     background: var(--color-error);
+}
+.notification__icon__info {
+    background: var(--color-info);
+}
+.notification__icon__warning {
+    background: var(--color-warning);
 }
 .notification__text {
     flex: 1;

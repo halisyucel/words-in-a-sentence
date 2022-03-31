@@ -1,0 +1,17 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-secondary);
+    background-color: var(--color-button-default);
+    height: 1.8rem;
+    border-radius: 1.8rem;
+    font-family: var(--work-sans);
+    font-size: .9rem;
+    font-weight: 300;
+    padding: 0 1rem;
+    cursor: pointer;
+    user-select: none;
+}
+.button:hover {
+    box-shadow: 0 0 0 .15rem #ffffff;
+}

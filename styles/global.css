@@ -5,11 +5,15 @@
     --color-background-primary: #2a2a35;
     --color-background-secondary: #dddddd;
     --color-background-tertiary: #454545;
-    --color-tureng-red: #c81d27;
+    --color-button-default: #e0e0e0;
     --color-success: #00b300;
     --color-warning: #ffc107;
     --color-error: #c81d27;
+    --color-info: #2196f3;
     --color-translation-text: #68a4e3;
+    --color-tureng: #c81d27;
+    --color-vip: #3469a5;
+    --color-yourdictionary: #1976d2;
     --pacifico: 'Pacifico', cursive;
     --signika: 'Signika', sans-serif;
     --work-sans: 'Work Sans', sans-serif;
