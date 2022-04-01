@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 
+//TODO bu arkadaşlar işlevsizse sileceğim
+
 const nextConfig = {
 	reactStrictMode: true,
-	env: {
+	/*env: {
 		GOOGLE_TRANSLATE_API__TYPE: process.env.GOOGLE_TRANSLATE_API__TYPE,
 		GOOGLE_TRANSLATE_API__PROJECT_ID:	process.env.GOOGLE_TRANSLATE_API__PROJECT_ID,
 		GOOGLE_TRANSLATE_API__PRIVATE_KEY_ID: process.env.GOOGLE_TRANSLATE_API__PRIVATE_KEY_ID,
@@ -13,7 +15,7 @@ const nextConfig = {
 		GOOGLE_TRANSLATE_API__TOKEN_URI: process.env.GOOGLE_TRANSLATE_API__TOKEN_URI,
 		GOOGLE_TRANSLATE_API__AUTH_PROVIDER_X509_CERT_URL: process.env.GOOGLE_TRANSLATE_API__AUTH_PROVIDER_X509_CERT_URL,
 		GOOGLE_TRANSLATE_API__CLIENT_X509_CERT_URL: process.env.GOOGLE_TRANSLATE_API__CLIENT_X509_CERT_URL
-	}
+	}*/
 }
 
 module.exports = nextConfig

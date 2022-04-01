@@ -3,11 +3,13 @@ import Layout from '../../components/layout';
 import Toolbar from '../../components/toolbar';
 import Tureng from '../../components/tureng';
 import Sentences from '../../components/sentences';
-import Button from '../../components/button';
 import { pushNotification } from '../../lib/components/notification';
 import { useDispatch } from 'react-redux';
 import { setNotification } from '../../redux/slices/notification';
 import { sleep } from '../../lib/helper';
+import Head from 'next/head';
+import Script from 'next/script';
+import GoogleTranslateYouGlish from '../../components/google-translate-you-glish';
 
 const Word = ({ word }) => {
 	const dispatch = useDispatch();
@@ -15,17 +17,25 @@ const Word = ({ word }) => {
 	const [clipboardText, setClipboardText] = useState('');
 	useEffect(() => {
 		const interval = setInterval(() => {
-			navigator.clipboard.readText()
-				.then(text => {
-					if (text.trim() !== '')
-						if (text.trim().length <= 15) {
-							if (firstClipboardText === '')
-								setFirstClipboardText(text.trim());
-							else if ((text.trim() !== clipboardText) && (text.trim() !== firstClipboardText))
-								setClipboardText(text.trim());
-						}
-				})
-				.catch(_err => (0));
+			if (navigator.clipboard) {
+				navigator.clipboard.readText()
+					.then(text => {
+						if (text.trim() !== '')
+							if (text.trim().length <= 15) {
+								if (firstClipboardText === '')
+									setFirstClipboardText(text.trim());
+								else if ((text.trim() !== clipboardText) && (text.trim() !== firstClipboardText)) {
+									setClipboardText(text.trim());
+									setFirstClipboardText(`random-${Math.ceil(Math.random() * 100000)}`);
+								}
+							}
+					})
+					.catch(_err => {
+						console.log(_err);
+					});
+			} else {
+				clearInterval(interval);
+			}
 		}, 1000);
 		return () => clearInterval(interval);
 	}, [firstClipboardText, clipboardText]);
@@ -51,6 +61,7 @@ const Word = ({ word }) => {
 	return (
 		<Layout style={{ padding: '1rem' }}>
 			<Toolbar word={word} />
+			<GoogleTranslateYouGlish />
 			<Tureng word={word} />
 			<Sentences
 				word={word}

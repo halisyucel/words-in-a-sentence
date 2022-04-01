@@ -1,9 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Header from './header';
 import PropTypes from 'prop-types';
 import Notification from './notification';
 import Head from 'next/head';
-import { useSelector } from 'react-redux';
 
 const Layout = ({ children, style, header }) => {
 	const notification = useSelector(state => state.notification);
@@ -18,7 +18,6 @@ const Layout = ({ children, style, header }) => {
 				<meta name="keywords" content="words, sentence, word, in, sentence" />
 				<meta name="robots" content="noindex, nofollow" />
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
 			</Head>
 			{header && <Header />}
 			<div style={style} className={'layout__body'}>{children}</div>
