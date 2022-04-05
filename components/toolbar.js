@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiTwotoneSetting } from 'react-icons/ai';
 import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { BsChevronUp, BsChevronDown } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
-import { indexUp, indexDown, toggleVisibility, setConfig } from '../redux/slices/config';
+import { setConfig } from '../redux/slices/config';
 import PropTypes from 'prop-types';
 import styles from '../styles/toolbar.module.css';
-import lookie from 'lookie';
 
 // TODO clipboard auto-copy allow section
 // TODO "did you mean"
