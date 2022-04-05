@@ -1,25 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Pagination from './pagination';
-import axios from 'axios';
+import useSentences from '../hooks/useSentences';
 
 const Tureng = ({ word }) => {
-	const [loading, setLoading] = useState(true);
-	const [results, setResults] = useState([]);
-	const [page, setPage] = useState(1);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(async () => {
-		setLoading(true);
-		setResults([]);
-		const turengResponse = await axios({
-			method: 'get',
-			url: `/api/tureng`,
-			params: { word }
-		});
-		setPage(1);
-		setResults(turengResponse.data.data);
-		setLoading(false);
-	}, [word]);
+	const { loading, results, page, setPage } = useSentences({ word, endpoint: '/api/tureng' });
 	return (
 		<div className={'tureng'}>
 			<div className={'tureng__header'}>

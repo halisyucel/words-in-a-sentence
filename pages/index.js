@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/layout';
 import Input from '../components/input';
 import Title from '../components/title';
-import axios from 'axios';
 
 const Home = () => {
 	const router = useRouter();
-	const [word, setWord] = useState('sorry');
-	useEffect(() => {
-		axios({ method: 'get', url: '/api/random' })
-			.then(response => {
-				setWord(response.data.data);
-			})
-	}, []);
 	return (
 		<Layout
 			header={false}
@@ -28,7 +20,6 @@ const Home = () => {
 					placeholder={'search a word'}
 					onSubmit={(value) => router.push(`/word/${value}`)}
 				/>
-				<a className={'home__link'} href={`/word/${word}`}>i feel myself lucky</a>
 			</div>
 		</Layout>
 	);

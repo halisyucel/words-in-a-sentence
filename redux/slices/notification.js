@@ -28,13 +28,10 @@ export const notificationSlice = createSlice({
 					buttonHref: action.payload.buttonHref || null,
 				};
 			}
-		},
-		deleteNotification: (state, action) => {
-			delete state[action.payload.id];
-		},
+		}
 	},
 });
 
-export const { setNotification, deleteNotification } = notificationSlice.actions;
+export const { setNotification } = notificationSlice.actions;
 
 export default notificationSlice.reducer;

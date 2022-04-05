@@ -1,38 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { createSlug } from '../lib/helper';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import Pagination from './pagination';
 import Loading from './loading';
-import { createSlug } from '../lib/helper';
 import Translation from './translation';
 import Sentence from './sentence';
+import useSentences from '../hooks/useSentences';
 
-// TODO - add a button to get data from clipboard
-
-const Sentences = ({ word, title, url, endpoint, color }) => {
-	const [loading, setLoading] = useState(true);
-	const [results, setResults] = useState([]);
-	const [page, setPage] = useState(1);
-	useEffect(() => {
-		setLoading(true);
-		setResults([]);
-		axios({
-			method: 'get',
-			url: endpoint,
-			params: { word }
-		})
-			.then(response => {
-				setResults(response.data.data);
-				setPage(1);
-				setLoading(false);
-			})
-			.catch(error => {
-				console.log(error);
-				setResults([]);
-				setPage(1);
-				setLoading(false);
-			});
-	}, [endpoint, word]);
+const Sentences = ({ word, title, url, endpoint, color, pageSize }) => {
+	const { loading, results, page, setPage } = useSentences({ word, endpoint });
 	return (
 		<div className={'sentences'}>
 			<div className={'sentences__header'} style={{ backgroundColor: color }}>
@@ -45,11 +21,12 @@ const Sentences = ({ word, title, url, endpoint, color }) => {
 				<Pagination
 					value={page}
 					total={results.length}
-					size={10}
+					size={pageSize}
 					onChange={(e) => setPage(e)}
 				/>
 			</div>
-			{[ ...results.slice((page - 1) * 10, ((page - 1) * 10) + 10) ].map((result, index) => (
+			{[ ...results.slice((page - 1) * pageSize, ((page - 1) * pageSize) + pageSize) ]
+				.map((result, index) => (
 				<div key={index} className={'sentences__result'}>
 					<Sentence
 						word={word}
@@ -71,7 +48,8 @@ Sentences.propTypes = {
 	title: PropTypes.string.isRequired,
 	url: PropTypes.string.isRequired,
 	endpoint: PropTypes.string.isRequired,
-	color: PropTypes.string
+	color: PropTypes.string,
+	pageSize: PropTypes.number.isRequired
 };
 
 export default Sentences;

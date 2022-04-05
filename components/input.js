@@ -1,14 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import PropTypes from 'prop-types';
+import styles from '../styles/input.module.css';
 
-const Input = ({ placeholder, onSubmit, size, style }) => {
-	const _style = (className) => {
+const Input = ({ className, placeholder, onSubmit, size, style }) => {
+	const setStyle = (_className) => {
 		switch (size) {
 			case 'small':
-				return `${className} ${className + '_small'}`;
+				return `${styles[_className]} ${styles[_className + '_small']}` + (className ? ` ${className}` : '');
 			default:
-				return className;
+				return styles[_className] + (className ? ` ${className}` : '');
 		}
 	}
 	const [inputId, setInputId] = useState('');
@@ -29,11 +30,11 @@ const Input = ({ placeholder, onSubmit, size, style }) => {
 			setValue(document.getElementById(inputId).value);
 	}, [ inputId ]);
 	return (
-		<div className={_style('search')} style={style}>
+		<div className={setStyle('search')} style={style}>
 			<input
 				id={inputId === '' ? null : inputId}
 				defaultValue={''}
-				className={_style('search__input')}
+				className={setStyle('search__input')}
 				type={'text'}
 				spellCheck={false}
 				onFocus={() => setFocus(true)}
@@ -46,13 +47,13 @@ const Input = ({ placeholder, onSubmit, size, style }) => {
 			/>
 			<div
 				onClick={() => document.getElementById(inputId).focus()}
-				className={`${_style('search__placeholder')} ${isFocus() ? 
-					_style('search__placeholder__focus') : ''}`}
+				className={`${setStyle('search__placeholder')} ${isFocus() ? 
+					setStyle('search__placeholder__focus') : ''}`}
 			>
 				{placeholder}
 			</div>
 			<div
-				className={_style('search__icon')}
+				className={setStyle('search__icon')}
 				onClick={submit}
 			>
 				<FiSearch />
@@ -62,6 +63,7 @@ const Input = ({ placeholder, onSubmit, size, style }) => {
 };
 
 Input.propTypes = {
+	className: PropTypes.string,
 	placeholder: PropTypes.string,
 	onSubmit: PropTypes.func,
 	size: PropTypes.string,
@@ -69,6 +71,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+	className: '',
 	placeholder: 'search a word',
 	size: 'normal',
 	style: {}

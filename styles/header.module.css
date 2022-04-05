@@ -7,17 +7,17 @@
     box-sizing: border-box;
     border-bottom: 4px solid var(--color-text-primary);
 }
-.header > .title {
+.header__title {
     margin-bottom: 0;
 }
-.header > .search {
+.header__search {
     width: 20rem;
 }
 @media (max-width: 768px) {
-    .header > .title {
-        display: none;
+    .header__title {
+        display: none !important;
     }
-    .header > .search {
+    .header__search {
         flex: 1;
     }
 }

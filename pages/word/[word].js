@@ -1,88 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { configToElement } from '../../lib/pages/[word]';
+import { setToken } from '../../redux/slices/config';
 import Layout from '../../components/layout';
 import Toolbar from '../../components/toolbar';
-import Tureng from '../../components/tureng';
-import Sentences from '../../components/sentences';
-import { pushNotification } from '../../lib/components/notification';
-import { useDispatch } from 'react-redux';
-import { setNotification } from '../../redux/slices/notification';
-import { sleep } from '../../lib/helper';
-import Head from 'next/head';
-import Script from 'next/script';
-import GoogleTranslateYouGlish from '../../components/google-translate-you-glish';
+import useClipboard from '../../hooks/useClipboard';
+import jwt from 'jsonwebtoken';
 
-const Word = ({ word }) => {
+const Word = ({ word, token }) => {
 	const dispatch = useDispatch();
-	const [firstClipboardText, setFirstClipboardText] = useState('');
-	const [clipboardText, setClipboardText] = useState('');
+	const config = useSelector((state) => state.config);
 	useEffect(() => {
-		const interval = setInterval(() => {
-			if (navigator.clipboard) {
-				navigator.clipboard.readText()
-					.then(text => {
-						if (text.trim() !== '')
-							if (text.trim().length <= 15) {
-								if (firstClipboardText === '')
-									setFirstClipboardText(text.trim());
-								else if ((text.trim() !== clipboardText) && (text.trim() !== firstClipboardText)) {
-									setClipboardText(text.trim());
-									setFirstClipboardText(`random-${Math.ceil(Math.random() * 100000)}`);
-								}
-							}
-					})
-					.catch(_err => {
-						console.log(_err);
-					});
-			} else {
-				clearInterval(interval);
-			}
-		}, 1000);
-		return () => clearInterval(interval);
-	}, [firstClipboardText, clipboardText]);
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	useEffect(async () => {
-		if (clipboardText.trim() !== '') {
-			await dispatch(setNotification({
-				id: 'clipboard',
-				visible: false,
-			}));
-			await sleep(500);
-			await pushNotification({
-				id: 'clipboard',
-				type: 'info',
-				text: `found the word "${clipboardText}"`,
-				button: true,
-				buttonText: 'Search',
-				buttonHref: `/word/${clipboardText}`,
-				interval: 8000
-			});
-		}
-	}, [dispatch, clipboardText]);
+		dispatch(setToken(token));
+	}, [dispatch, token]);
+	useClipboard({ word, config });
 	return (
 		<Layout style={{ padding: '1rem' }}>
 			<Toolbar word={word} />
-			<GoogleTranslateYouGlish />
-			<Tureng word={word} />
-			<Sentences
-				word={word}
-				title={'vipingilizce.net'}
-				url={`http://vipingilizce.net/kelime/${word}/`}
-				endpoint={'/api/vip'}
-				color={'var(--color-vip)'}
-			/>
-			<Sentences
-				word={word}
-				title={'yourdictionary.com'}
-				url={`https://sentence.yourdictionary.com/${word}`}
-				endpoint={'/api/yourdictionary'}
-				color={'var(--color-yourdictionary)'}
-			/>
+			{Object.values(config.components)
+				.filter(item => item.visible)
+				.sort((a, b) => a.index - b.index)
+				.map(item => configToElement({
+					name: item.name,
+					key: item.index,
+					word: word
+				}))}
 		</Layout>
 	);
 };
 
 const getServerSideProps = async ({ params }) => {
-	return { props: { word: params.word } };
+	const token = jwt.sign({
+		exp: Math.floor(Date.now() / 1000) + (60 * 60),
+	}, process.env.JWT_SECRET);
+	return { props: { word: params.word, token } };
 };
 
 export default Word;

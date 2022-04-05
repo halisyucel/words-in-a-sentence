@@ -1,10 +1,10 @@
 import { queryScheme } from '../../lib/api/global';
 import { getYourDictionaryData } from '../../lib/api/yourdictionary';
-import { replaceAll } from '../../lib/helper';
+import { replaceAll, validate } from '../../lib/helper';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-	const { error, value } = queryScheme.validate(req.query);
+	const { error, value } = validate(req);
 	if (error)
 		return res.status(400).json({ status: false, message: error.message });
 	else {
