@@ -4,8 +4,6 @@ import store from '../redux/store';
 import '../styles/reset.css';
 import '../styles/global.css';
 
-// TODO copy bildirimi bozuk
-
 const MyApp = ({ Component, pageProps }) => {
     // noinspection JSValidateTypes, RequiredAttributes
     return (
