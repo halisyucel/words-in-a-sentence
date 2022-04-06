@@ -66,26 +66,6 @@ const Toolbar = ({ word }) => {
 									<div className={styles.toolbar__settings__page__box__list__item__title__text}>
 										{item.name}
 									</div>
-									<div
-										style={{ visibility: item.index !== 1 ? 'visible' : 'hidden' }}
-										className={styles.toolbar__settings__page__box__list__item__title__icon}
-										onClick={() => dispatch(indexUp({ name: item.name }))}
-									>
-										<BsChevronUp />
-									</div>
-									<div
-										style={{ visibility: item.index !== (Object.keys(config).length) ? 'visible' : 'hidden' }}
-										className={styles.toolbar__settings__page__box__list__item__title__icon}
-										onClick={() => dispatch(indexDown({ name: item.name }))}
-									>
-										<BsChevronDown />
-									</div>
-									<div
-										className={styles.toolbar__settings__page__box__list__item__title__icon}
-										onClick={() => dispatch(toggleVisibility({ name: item.name }))}
-									>
-										{item.visible ? <FaEye /> : <FaEyeSlash />}
-									</div>
 								</div>
 							</div>
 						))}

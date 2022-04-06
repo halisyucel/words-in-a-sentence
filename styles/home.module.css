@@ -5,23 +5,14 @@
     justify-content: center;
     align-items: center;
 }
-.home__link {
-    margin-top: 1rem;
-    display: block;
-    color: var(--color-text-primary);
-    font-family: var(--work-sans);
-    font-weight: 300;
-    text-decoration: none;
-    font-size: .8rem;
-}
 @media (max-width: 768px) {
     .home {
         width: 90%;
     }
-    .home > .title {
+    .home__title {
         font-size:2rem;
     }
-    .home > .title > img {
+    .home__title > img {
         height: 1.5rem;
     }
 }

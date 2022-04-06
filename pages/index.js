@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Layout from '../components/layout';
 import Input from '../components/input';
 import Title from '../components/title';
+import styles from '../styles/home.module.css';
 
 const Home = () => {
 	const router = useRouter();
@@ -14,8 +15,8 @@ const Home = () => {
 				alignItems: 'center',
 			}}
 		>
-			<div className={'home'}>
-				<Title />
+			<div className={styles.home}>
+				<Title className={styles.home__title} />
 				<Input
 					placeholder={'search a word'}
 					onSubmit={(value) => router.push(`/word/${value}`)}

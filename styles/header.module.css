@@ -14,10 +14,13 @@
     width: 20rem;
 }
 @media (max-width: 768px) {
+    .header {
+        flex-flow: column;
+    }
     .header__title {
-        display: none !important;
+        margin-bottom: 1rem !important;
     }
     .header__search {
-        flex: 1;
+        width: 100%;
     }
 }

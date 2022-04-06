@@ -4,14 +4,6 @@ import PropTypes from 'prop-types';
 import styles from '../styles/input.module.css';
 
 const Input = ({ className, placeholder, onSubmit, size, style }) => {
-	const setStyle = (_className) => {
-		switch (size) {
-			case 'small':
-				return `${styles[_className]} ${styles[_className + '_small']}` + (className ? ` ${className}` : '');
-			default:
-				return styles[_className] + (className ? ` ${className}` : '');
-		}
-	}
 	const [inputId, setInputId] = useState('');
 	const [value, setValue] = useState('');
 	const [focus, setFocus] = useState(false);
@@ -30,11 +22,12 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 			setValue(document.getElementById(inputId).value);
 	}, [ inputId ]);
 	return (
-		<div className={setStyle('search')} style={style}>
+		<div className={`${styles.search} ${className}`.trim()} style={style}>
 			<input
+				aria-label={size}
 				id={inputId === '' ? null : inputId}
 				defaultValue={''}
-				className={setStyle('search__input')}
+				className={styles.search__input}
 				type={'text'}
 				spellCheck={false}
 				onFocus={() => setFocus(true)}
@@ -46,14 +39,16 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 				}}
 			/>
 			<div
+				aria-label={size}
 				onClick={() => document.getElementById(inputId).focus()}
-				className={`${setStyle('search__placeholder')} ${isFocus() ? 
-					setStyle('search__placeholder__focus') : ''}`}
+				className={`${styles.search__placeholder} ${isFocus() ? 
+					styles.search__placeholder__focus : ''}`.trim()}
 			>
 				{placeholder}
 			</div>
 			<div
-				className={setStyle('search__icon')}
+				aria-label={size}
+				className={styles.search__icon}
 				onClick={submit}
 			>
 				<FiSearch />

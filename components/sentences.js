@@ -6,17 +6,18 @@ import Loading from './loading';
 import Translation from './translation';
 import Sentence from './sentence';
 import useSentences from '../hooks/useSentences';
+import styles from '../styles/sentences.module.css';
 
 const Sentences = ({ word, title, url, endpoint, color, pageSize }) => {
 	const { loading, results, page, setPage } = useSentences({ word, endpoint });
 	return (
-		<div className={'sentences'}>
-			<div className={'sentences__header'} style={{ backgroundColor: color }}>
+		<div className={styles.sentences}>
+			<div className={styles.sentences__header} style={{ backgroundColor: color }}>
 				<a href={url} target={'_blank'} rel={'noreferrer'}>
 					{title}
 					{loading ? <Loading /> :
 						(results.length === 0 ? <span>no results found</span> :
-							<span className={'sentences__header__number'}>{`${results.length} results found`}</span>)}
+							<span className={styles.sentences__header__number}>{`${results.length} results found`}</span>)}
 				</a>
 				<Pagination
 					value={page}
@@ -27,7 +28,7 @@ const Sentences = ({ word, title, url, endpoint, color, pageSize }) => {
 			</div>
 			{[ ...results.slice((page - 1) * pageSize, ((page - 1) * pageSize) + pageSize) ]
 				.map((result, index) => (
-				<div key={index} className={'sentences__result'}>
+				<div key={index} className={styles.sentences__result}>
 					<Sentence
 						word={word}
 						text={result.sentence}

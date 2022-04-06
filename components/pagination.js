@@ -1,57 +1,67 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BsChevronDoubleLeft, BsChevronLeft, BsChevronDoubleRight, BsChevronRight } from 'react-icons/bs';
+import PropTypes from 'prop-types';
+import styles from '../styles/pagination.module.css';
 
 const Pagination = ({ value, onChange, size, total }) => {
 	const lastValue = Math.ceil(total / size);
 	return (
 		total === 0 ? null :
-		<div className={'pagination'}>
+		<div className={styles.pagination}>
 			<div
-				className={`pagination__item__chevron ${[1,2].includes(value) && 'disable'}`}
+				aria-disabled={[1,2].includes(value) ? 'true' : 'false'}
+				className={styles.pagination__item__chevron}
 				onClick={() => ![1,2].includes(value) && onChange(1)}
 			>
 				<BsChevronDoubleLeft />
 			</div>
 			<div
-				className={`pagination__item__chevron pagination__item__chevron__inside ${[1,2].includes(value) && 'disable'}`}
+				aria-disabled={[1,2].includes(value) ? 'true' : 'false'}
+				className={`${styles.pagination__item__chevron} ${styles.pagination__item__chevron__inside}`}
 				onClick={() => ![1,2].includes(value) && onChange(value - 1)}
 			>
 				<BsChevronLeft />
 			</div>
 			{(value - 2) > 0 && (value === lastValue && (<div
-				className={'pagination__item'}
+				className={styles.pagination__item}
 				onClick={() => onChange(value - 2)}
 			>
 				{value - 2}
 			</div>))}
 			{(value - 1) !== 0 && (<div
-				className={`pagination__item`}
+				className={styles.pagination__item}
 				onClick={() => onChange(value - 1)}
 			>
 				{value - 1}
 			</div>)}
-			<div className={'pagination__item active'}>{value}</div>
+			<div
+				aria-label={'active-page'}
+				className={styles.pagination__item}
+			>
+				{value}
+			</div>
 			{lastValue !== value && (<div
-					className={'pagination__item'}
+					className={styles.pagination__item}
 					onClick={() => onChange(value + 1)}
 				>
 					{value + 1}
 			</div>)}
 			{lastValue >= (value + 2) && (value === 1 && (<div
-				className={'pagination__item'}
+				className={styles.pagination__item}
 				onClick={() => onChange(value + 2)}
 			>
 				{value + 2}
 			</div>))}
 			<div
-				className={`pagination__item__chevron pagination__item__chevron__inside ${[(lastValue - 1), lastValue].includes(value) && 'disable'}`}
+				aria-disabled={[(lastValue - 1), lastValue].includes(value) ? 'true' : 'false'}
+				className={`${styles.pagination__item__chevron} ${styles.pagination__item__chevron__inside}`}
 				onClick={() => ![(lastValue - 1), lastValue].includes(value) && onChange(value + 1)}
 			>
 				<BsChevronRight />
 			</div>
 			<div
-				className={`pagination__item__chevron ${[(lastValue - 1), lastValue].includes(value) && 'disable'}`}
+				aria-disabled={[(lastValue - 1), lastValue].includes(value) ? 'true' : 'false'}
+				className={styles.pagination__item__chevron}
 				onClick={() => ![(lastValue - 1), lastValue].includes(value) && onChange(lastValue)}
 			>
 				<BsChevronDoubleRight />

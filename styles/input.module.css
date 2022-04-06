@@ -20,7 +20,7 @@
     font-family: var(--signika);
     z-index: 99;
 }
-.search__input_small {
+.search__input[aria-label="small"] {
     height: 2.5rem;
     padding: 0 2rem 0 1rem;
     font-size: 1.1rem;
@@ -39,7 +39,7 @@
     cursor: pointer;
     z-index: 100;
 }
-.search__icon_small {
+.search__icon[aria-label="small"] {
     height: 2.5rem;
     width: 2.5rem;
     font-size: 1.1rem;
@@ -61,7 +61,7 @@
     z-index: 100;
     transition: opacity 0.2s ease-in-out, font-size 0.2s ease-in-out, top 0.2s ease-in-out;
 }
-.search__placeholder_small {
+.search__placeholder[aria-label="small"] {
     font-size: 1.1rem;
     top: calc(50% - .55rem);
     left: calc(1.1rem + 4px - .25rem);
@@ -71,7 +71,7 @@
     font-size: .9rem;
     top: -0.4rem;
 }
-.search__placeholder__focus_small {
+.search__placeholder__focus[aria-label="small"] {
     font-size: .7rem;
     top: -0.3rem;
 }

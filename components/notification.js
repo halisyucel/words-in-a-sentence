@@ -1,32 +1,17 @@
 import React, { useCallback, useState, useEffect } from 'react';
-import styles from '../styles/notification.module.css';
-import { TiTick, TiWarningOutline, TiInfoLarge } from 'react-icons/ti';
-import { FaTimes } from 'react-icons/fa';
-import Button from './button';
-import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { setNotification } from '../redux/slices/notification';
 import { useDispatch } from 'react-redux';
+import { getIcon } from '../lib/components/notification';
+import styles from '../styles/notification.module.css';
+import Button from './button';
+import PropTypes from 'prop-types';
 
 const Notification = ({ id, type, text, visible, position, button, buttonText, buttonHref }) => {
 	const router = useRouter();
 	const dispatch = useDispatch();
-	const icon = () => {
-		switch (type) {
-			case 'success':
-				return <TiTick />;
-			case 'error':
-				return <FaTimes />;
-			case 'warning':
-				return <TiWarningOutline />;
-			case 'info':
-				return <TiInfoLarge />;
-			default:
-				return <TiTick />;
-		}
-	};
 	const [width, setWidth] = useState(100);
-	const style = useCallback(() => {
+	const generateStyle = useCallback(() => {
 		switch (position) {
 			case 'topLeft':
 				return {
@@ -62,21 +47,17 @@ const Notification = ({ id, type, text, visible, position, button, buttonText, b
 				return {};
 		}
 	}, [width, visible, position]);
-	useEffect(() => {
-		if (visible) {
-			setWidth(document.getElementById(id).offsetWidth);
-		}
-	}, [id, visible]);
+	useEffect(() => visible && setWidth(document.getElementById(id).offsetWidth), [id, visible]);
 	return (
 		<div
 			id={id}
 			className={styles.notification}
-			style={style()}
+			style={generateStyle()}
 		>
 			<div
 				className={`${styles.notification__icon} ${styles['notification__icon__' + type]}`}
 			>
-				{icon()}
+				{getIcon({ type })}
 			</div>
 			<div className={styles.notification__text}>{text}</div>
 			{button && <Button

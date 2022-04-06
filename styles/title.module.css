@@ -6,9 +6,6 @@
     align-items: flex-end;
     margin-bottom: 1.5rem;
 }
-.title_small {
-    font-size: 2rem;
-}
 .title > img {
     height: 2rem;
     margin-left: 1rem;
@@ -21,6 +18,9 @@
 .title > a:hover {
     color: #ffffff;
 }
-.title_small > img {
+.title[aria-label="small"] {
+    font-size: 2rem;
+}
+.title[aria-label="small"] > img {
     height: 1.5rem;
 }

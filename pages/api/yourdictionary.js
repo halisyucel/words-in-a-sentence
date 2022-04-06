@@ -1,4 +1,3 @@
-import { queryScheme } from '../../lib/api/global';
 import { getYourDictionaryData } from '../../lib/api/yourdictionary';
 import { replaceAll, validate } from '../../lib/helper';
 

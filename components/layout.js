@@ -4,11 +4,12 @@ import Header from './header';
 import PropTypes from 'prop-types';
 import Notification from './notification';
 import Head from 'next/head';
+import styles from '../styles/layout.module.css';
 
 const Layout = ({ children, style, header }) => {
 	const notification = useSelector(state => state.notification);
 	return (
-		<div className={'layout'}>
+		<div className={styles.layout}>
 			<Head>
 				<title>Words In A Translation &#127481;&#127479;</title>
 				<meta charSet="UTF-8" />
@@ -20,7 +21,7 @@ const Layout = ({ children, style, header }) => {
 				<link rel="icon" type="image/x-icon" href={'/favicon.ico'} />
 			</Head>
 			{header && <Header />}
-			<div style={style} className={'layout__body'}>{children}</div>
+			<div style={style} className={styles.layout__body}>{children}</div>
 			{Object.keys(notification).map(key => (
 				<Notification
 					id={key}

@@ -10,9 +10,7 @@ import jwt from 'jsonwebtoken';
 const Word = ({ word, token }) => {
 	const dispatch = useDispatch();
 	const config = useSelector((state) => state.config);
-	useEffect(() => {
-		dispatch(setToken(token));
-	}, [dispatch, token]);
+	useEffect(() => dispatch(setToken(token)), [dispatch, token]);
 	useClipboard({ word, config });
 	return (
 		<Layout style={{ padding: '1rem' }}>
@@ -30,9 +28,7 @@ const Word = ({ word, token }) => {
 };
 
 const getServerSideProps = async ({ params }) => {
-	const token = jwt.sign({
-		exp: Math.floor(Date.now() / 1000) + (60 * 60),
-	}, process.env.JWT_SECRET);
+	const token = jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60) }, process.env.JWT_SECRET);
 	return { props: { word: params.word, token } };
 };
 

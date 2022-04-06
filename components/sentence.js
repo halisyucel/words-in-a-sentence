@@ -1,17 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { copyTextToClipboard } from '../lib/helper';
 import { MdContentCopy } from 'react-icons/md';
+import PropTypes from 'prop-types';
+import styles from '../styles/sentences.module.css';
 
 const Sentence = ({ word, text }) => {
 	return (
-		<div className={'sentences__result__sentence'}>
+		<div className={styles.sentences__result__sentence}>
 			<div
-				className={'sentences__result__sentence__text'}
+				className={styles.sentences__result__sentence__text}
 				dangerouslySetInnerHTML={{ __html: text.replaceAll(word, `<b>${word}</b>`)}}
 			/>
 			<div
-				className={'sentences__result__sentence__copy'}
+				className={styles.sentences__result__sentence__copy}
 				title={'Copy to clipboard'}
 				onClick={() => copyTextToClipboard(text)}
 			>
