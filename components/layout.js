@@ -4,6 +4,7 @@ import Header from './header';
 import PropTypes from 'prop-types';
 import Notification from './notification';
 import Head from 'next/head';
+import Footer from './footer';
 import styles from '../styles/layout.module.css';
 
 const Layout = ({ children, style, header }) => {
@@ -35,6 +36,7 @@ const Layout = ({ children, style, header }) => {
 					buttonHref={notification[key].buttonHref}
 				/>
 			))}
+			<Footer />
 		</div>
 	);
 };
