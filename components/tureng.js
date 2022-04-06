@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Pagination from './pagination';
 import useSentences from '../hooks/useSentences';
 import styles from '../styles/tureng.module.css';
+import Loading from './loading';
 
 const Tureng = ({ word }) => {
 	const { loading, results, page, setPage } = useSentences({ word, endpoint: '/api/tureng' });
@@ -11,7 +12,7 @@ const Tureng = ({ word }) => {
 			<div className={styles.tureng__header}>
 				<a href={`https://tureng.com/tr/turkce-ingilizce/${word}`} target={'_blank'} rel={'noreferrer'}>
 					tureng.com
-					{loading ? <span>loading...</span> :
+					{loading ? <Loading /> :
 					(results.length === 0 ? <span>no results found</span> :
 						<span className={styles.tureng__header__number}>{`${results.length} results found`}</span>)}
 				</a>
