@@ -27,7 +27,10 @@ const Tureng = ({ word }) => {
 				<div key={index} className={styles.tureng__result}>
 					<div className={styles.tureng__result__category}>{result.category}</div>
 					<div className={styles.tureng__result__english}>
-						{result.english}&nbsp;&nbsp;&nbsp;<i>{result.wordType}</i>
+						<div>{result.english}</div>
+						<div className={styles.tureng__result__english__type}>
+							{result.wordType}
+						</div>
 					</div>
 					<div className={styles.tureng__result__turkish}>{result.turkish}</div>
 				</div>

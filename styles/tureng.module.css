@@ -45,9 +45,11 @@
 .tureng__result__english {
     flex: 1;
     padding-right: 1rem;
+    display: flex;
 }
-.tureng__result__english > i {
+.tureng__result__english__type {
     font-style: italic;
+    margin-left: .6rem;
 }
 .tureng__result__turkish {
     flex: 1;
