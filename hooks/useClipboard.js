@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { useCallback, useEffect, useState } from 'react';
-import lookie from 'lookie';
 import { sleep } from '../lib/helper';
 import { setNotification } from '../redux/slices/notification';
 import { pushNotification } from '../lib/components/notification';
+import lookie from 'lookie';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({ word, config }) => {
+export default ({ word }) => {
 	const dispatch = useDispatch();
 	const [notificationClipboardText, setNotificationClipboardText] = useState('');
 	const [refreshUseEffect, setRefreshUseEffect] = useState(0);
@@ -26,10 +26,7 @@ export default ({ word, config }) => {
 				name: 'clipboard-read',
 				allowWithoutGesture: false
 			});
-			if (
-				(permissionResult.state === 'granted' || permissionResult.state === 'prompt')
-				&& config.autoCopy.enabled
-			) {
+			if (permissionResult.state === 'granted' || permissionResult.state === 'prompt') {
 				if (lookie.get('firstClipboardText') !== 'first-clipboard-text-expired') {
 					try {
 						lookie.set('firstClipboardText',
@@ -40,23 +37,24 @@ export default ({ word, config }) => {
 					}
 				}
 				const interval = setInterval(() => {
-					navigator.clipboard.readText()
-						.then(clipboardText => {
-							if (isClipboardTextVerified(clipboardText))
-								if (clipboardText !== lookie.get('firstClipboardText'))
-									if (clipboardText !== lookie.get('lastClipboardText')) {
-										lookie.set('lastClipboardText', clipboardText);
-										setNotificationClipboardText(clipboardText);
-										if (lookie.get('firstClipboardText') !== 'first-clipboard-text-expired')
-											lookie.set('firstClipboardText', 'first-clipboard-text-expired');
-									}
-						})
-						.catch(() => (0));
+					if (lookie.get('allowDetectClipboard'))
+						navigator.clipboard.readText()
+							.then(clipboardText => {
+								if (isClipboardTextVerified(clipboardText))
+									if (clipboardText !== lookie.get('firstClipboardText'))
+										if (clipboardText !== lookie.get('lastClipboardText')) {
+											lookie.set('lastClipboardText', clipboardText);
+											setNotificationClipboardText(clipboardText);
+											if (lookie.get('firstClipboardText') !== 'first-clipboard-text-expired')
+												lookie.set('firstClipboardText', 'first-clipboard-text-expired');
+										}
+							})
+							.catch(() => (0));
 				}, 2000);
 				return () => clearInterval(interval);
 			}
 		}
-	}, [refreshUseEffect, config.autoCopy.enabled, isClipboardTextVerified]);
+	}, [refreshUseEffect, isClipboardTextVerified]);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(async () => {
 		if (notificationClipboardText.trim() !== '') {

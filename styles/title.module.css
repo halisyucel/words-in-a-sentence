@@ -18,9 +18,9 @@
 .title > a:hover {
     color: #ffffff;
 }
-.title[aria-label="small"] {
+.title[data-size="small"] {
     font-size: 2rem;
 }
-.title[aria-label="small"] > img {
+.title[data-size="small"] > img {
     height: 1.5rem;
 }

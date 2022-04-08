@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { configToElement } from '../../lib/pages/[word]';
-import { setToken } from '../../redux/slices/config';
+import { settingsToElement } from '../../lib/pages/[word]';
+import { setToken } from '../../redux/slices/settings';
 import Layout from '../../components/layout';
 import Toolbar from '../../components/toolbar';
 import useClipboard from '../../hooks/useClipboard';
@@ -9,16 +9,16 @@ import jwt from 'jsonwebtoken';
 
 const Word = ({ word, token }) => {
 	const dispatch = useDispatch();
-	const config = useSelector((state) => state.config);
+	const settings = useSelector((state) => state.settings);
 	useEffect(() => dispatch(setToken(token)), [dispatch, token]);
-	useClipboard({ word, config });
+	useClipboard({ word });
 	return (
 		<Layout style={{ padding: '1rem' }}>
 			<Toolbar word={word} />
-			{Object.values(config.components)
+			{Object.values(settings.components)
 				.filter(item => item.visible)
 				.sort((a, b) => a.index - b.index)
-				.map(item => configToElement({
+				.map(item => settingsToElement({
 					name: item.name,
 					key: item.index,
 					word: word

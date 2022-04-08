@@ -1,77 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { AiTwotoneSetting } from 'react-icons/ai';
-import { FaTimes, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { BsChevronUp, BsChevronDown } from 'react-icons/bs';
-import { useSelector, useDispatch } from 'react-redux';
-import { setConfig } from '../redux/slices/config';
 import PropTypes from 'prop-types';
 import styles from '../styles/toolbar.module.css';
-
-// TODO clipboard auto-copy allow section
-// TODO "did you mean"
+import Settings from './settings';
 
 const Toolbar = ({ word }) => {
-	const dispatch = useDispatch();
-	const config = useSelector((state) => state.config.components);
-	const [firstCheck, setFirstCheck] = useState(false);
-	const [isOpen, setIsOpen] = useState(false);
+	const [settingsPopupVisibility, setSettingsPopupVisibility] = useState(false);
 	useEffect(() => {
-		if (isOpen) {
+		if (settingsPopupVisibility) {
 			document.body.style.overflow = 'hidden';
 			document.body.style.userSelect = 'none';
 		} else {
 			document.body.style.overflow = 'auto';
 			document.body.style.userSelect = 'auto';
 		}
-	}, [isOpen]);
-	useEffect(() => {
-
-	}, [dispatch]);
+	}, [settingsPopupVisibility]);
 	return (
 		<div className={styles.toolbar}>
 			<div className={styles.toolbar__text}>
 				results for your search <span className={styles.toolbar__text__highlight}>{word}</span>
 			</div>
 			<div
-				className={styles.toolbar__settings}
-				onClick={() => setIsOpen(!isOpen)}
+				className={styles.toolbar__button}
+				onClick={() => setSettingsPopupVisibility(true)}
 			>
 				<AiTwotoneSetting />
 			</div>
-			<div className={styles.toolbar__settings__page} style={{ display: isOpen ? 'flex' : 'none' }}>
-				<div className={styles.toolbar__settings__page__box}>
-					<div className={styles.toolbar__settings__page__box__title}>
-						<div className={styles.toolbar__settings__page__box__title__text}>
-							Settings
-						</div>
-						<div
-							className={styles.toolbar__settings__page__box__title__close}
-							onClick={() => setIsOpen(false)}
-						>
-							<FaTimes />
-						</div>
-					</div>
-					<div className={styles.toolbar__settings__page__box__list}>
-						{Object.values(config).sort((x, y) => (x.index - y.index)).map((item, index) => (
-							<div
-								key={index}
-								className={
-									(styles.toolbar__settings__page__box__list__item + ' ' +
-									(item.active ? styles.toolbar__settings__page__box__list__item__active : '')).trim()
-								}
-							>
-								<div
-									className={styles.toolbar__settings__page__box__list__item__title}
-								>
-									<div className={styles.toolbar__settings__page__box__list__item__title__text}>
-										{item.name}
-									</div>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
+			<Settings
+				visibility={settingsPopupVisibility}
+				onVisibility={setSettingsPopupVisibility}
+			/>
 		</div>
 	);
 };

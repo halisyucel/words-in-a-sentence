@@ -5,7 +5,7 @@ import styles from '../styles/title.module.css';
 
 const Title = ({ className, style, size }) => {
 	return (
-		<div aria-label={size} className={`${styles.title} ${className}`.trim()} style={style}>
+		<div data-size={size} className={`${styles.title} ${className}`.trim()} style={style}>
 			<Link href={'/'}>
 				<a>words in a sentence</a>
 			</Link>

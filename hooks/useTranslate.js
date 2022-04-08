@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({ id, sentence, text}) => {
-	const token = useSelector(state => state.config.token);
+	const token = useSelector(state => state.settings.token);
 	const [translation, setTranslation] = useState({
 		loading: true,
 		text: '',

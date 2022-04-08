@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import notificationReducer from './slices/notification';
-import configReducer from './slices/config';
+import settingsReducer from './slices/settings';
 
 const store = configureStore({
 	reducer: {
 		notification: notificationReducer,
-		config: configReducer,
+		settings: settingsReducer,
 	}
 });
 

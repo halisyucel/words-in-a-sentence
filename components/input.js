@@ -24,7 +24,7 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 	return (
 		<div className={`${styles.search} ${className}`.trim()} style={style}>
 			<input
-				aria-label={size}
+				data-size={size}
 				id={inputId === '' ? null : inputId}
 				defaultValue={''}
 				className={styles.search__input}
@@ -39,7 +39,7 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 				}}
 			/>
 			<div
-				aria-label={size}
+				data-size={size}
 				onClick={() => document.getElementById(inputId).focus()}
 				className={`${styles.search__placeholder} ${isFocus() ? 
 					styles.search__placeholder__focus : ''}`.trim()}
@@ -47,7 +47,7 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 				{placeholder}
 			</div>
 			<div
-				aria-label={size}
+				data-size={size}
 				className={styles.search__icon}
 				onClick={submit}
 			>

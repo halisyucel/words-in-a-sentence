@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({ word, endpoint }) => {
-	const token = useSelector(state => state.config.token);
+	const token = useSelector(state => state.settings.token);
 	const [loading, setLoading] = useState(true);
 	const [results, setResults] = useState([]);
 	const [page, setPage] = useState(1);

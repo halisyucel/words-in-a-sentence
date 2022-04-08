@@ -1,0 +1,37 @@
+.switch {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: .5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.switch[data-state="disabled"] {
+    cursor: not-allowed;
+}
+.switch__lock {
+    height: .4rem;
+    width: 100%;
+    border-radius: .4rem;
+    background-color: var(--color-background-tertiary);
+    opacity: 0.25;
+}
+.switch__key {
+    z-index: 1000;
+    position: absolute;
+    width: .8rem;
+    height: .8rem;
+    border-radius: .8rem;
+    background-color: var(--color-background-tertiary);
+    transition: all .3s ease-in-out;
+}
+.switch__key[data-value="on"] {
+    right: 0;
+    background-color: var(--color-info);
+}
+.switch__key[data-value="off"] {
+    left: 0;
+    background-color: var(--color-background-tertiary);
+}
