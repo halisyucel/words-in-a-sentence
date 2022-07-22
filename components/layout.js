@@ -21,7 +21,7 @@ const Layout = ({ children, style, header }) => {
 				/>
 				<meta name="description" content={'Words in a Sentence'} />
 				<meta name="keywords" content="words, sentence, word, in, sentence" />
-				<meta name="robots" content="noindex, nofollow" />
+				<meta name="robots" content="index, follow" />
 				<link rel="icon" type="image/x-icon" href={'/favicon.png'} />
 				{/* open graph */}
 				<meta property="og:title" content={'Words in a Sentence'} />

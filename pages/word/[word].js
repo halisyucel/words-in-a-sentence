@@ -6,6 +6,7 @@ import { setToken } from '../../redux/slices/settings';
 import jwt from 'jsonwebtoken';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet'; 
 
 const Word = ({ word, token }) => {
 	const dispatch = useDispatch();
@@ -14,6 +15,9 @@ const Word = ({ word, token }) => {
 	useClipboard({ word });
 	return (
 		<Layout style={{ padding: '1rem' }}>
+			<Helmet>
+				<title>{word} | Words in a Sentence &#127481;&#127479;</title>
+			</Helmet>
 			<Toolbar word={word} />
 			{Object.values(settings.components)
 				.filter((item) => item.visible)
