@@ -12,40 +12,40 @@ const Layout = ({ children, style, header }) => {
 	return (
 		<div className={styles.layout}>
 			<Head>
-				<title>{process.env.NEXT_PUBLIC_SITE_TITLE} &#127481;&#127479;</title>
+				<title>Words in a Sentence &#127481;&#127479;</title>
 				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-				<meta name="description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
+				<meta name="description" content={'Words in a Sentence'} />
 				<meta name="keywords" content="words, sentence, word, in, sentence" />
 				<meta name="robots" content="noindex, nofollow" />
 				<link rel="icon" type="image/x-icon" href={'/favicon.png'} />
 				{/* open graph */}
-				<meta property="og:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
-				<meta property="og:site_name" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
-				<meta property="og:url" content={process.env.NEXT_PUBLIC_SITE_URL} />
-				<meta property="og:description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
+				<meta property="og:title" content={'Words in a Sentence'} />
+				<meta property="og:site_name" content={'Words in a Sentence'} />
+				<meta property="og:url" content={'https://words-in-a-sentence-tr.vercel.app/'} />
+				<meta property="og:description" content={'Words in a Sentence'} />
 				<meta property="og:type" content="website" />
-				<meta property="og:image" content={process.env.NEXT_PUBLIC_SITE_CARD_IMAGE} />
+				<meta property="og:image" content={'/card.jpg'} />
 				{/* twitter card */}
 				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="twitter:title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
-				<meta name="twitter:description" content={process.env.NEXT_PUBLIC_SITE_DESCRIPTION} />
-				<meta name="twitter:image" content={process.env.NEXT_PUBLIC_SITE_CARD_IMAGE} />
+				<meta name="twitter:title" content={'Words in a Sentence'} />
+				<meta name="twitter:description" content={'Words in a Sentence'} />
+				<meta name="twitter:image" content={'/card.jpg'} />
 				{/* android */}
-				<meta name="theme-color" content={process.env.NEXT_PUBLIC_SITE_THEME_COLOR} />
+				<meta name="theme-color" content={'#ffff7f'} />
 				<meta name="mobile-web-app-capable" content="yes" />
 				{/* ios */}
-				<meta name="apple-mobile-web-app-title" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+				<meta name="apple-mobile-web-app-title" content={'Words in a Sentence'} />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 				{/* windows */}
-				<meta name="msapplication-navbutton-color" content={process.env.NEXT_PUBLIC_SITE_THEME_COLOR} />
-				<meta name="msapplication-TileColor" content={process.env.NEXT_PUBLIC_SITE_THEME_COLOR} />
+				<meta name="msapplication-navbutton-color" content={'#ffff7f'} />
+				<meta name="msapplication-TileColor" content={'#ffff7f'} />
 				<meta name="msapplication-TileImage" content={'/favicon.png'} />
 				{/* pinned sites */}
-				<meta name="application-name" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
-				<meta name="msapplication-tooltip" content={process.env.NEXT_PUBLIC_SITE_TITLE} />
+				<meta name="application-name" content={'Words in a Sentence'} />
+				<meta name="msapplication-tooltip" content={'Words in a Sentence'} />
 				<meta name="msapplication-starturl" content="/" />
 			</Head>
 			{header && <Header />}
