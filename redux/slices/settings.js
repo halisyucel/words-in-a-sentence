@@ -15,12 +15,18 @@ const initialState = {
 			text: 'vipingilizce.net',
 			visible: true,
 		},
-		yourdictionary: {
+		merriamwebster: {
 			index: 3,
+			name: 'merriamwebster',
+			text: 'merriam-webster.com',
+			visible: true,
+		},
+		yourdictionary: {
+			index: 4,
 			name: 'yourdictionary',
 			text: 'yourdictionary.com',
 			visible: true,
-		},
+		}
 	},
 };
 
