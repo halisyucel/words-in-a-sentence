@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({ word, endpoint }) => {
-	const token = useSelector(state => state.settings.token);
+	const token = useSelector((state) => state.settings.token);
 	const [loading, setLoading] = useState(true);
 	const [results, setResults] = useState([]);
 	const [page, setPage] = useState(1);
@@ -20,12 +20,12 @@ export default ({ word, endpoint }) => {
 					'x-access-token': token,
 				},
 			})
-				.then(response => {
+				.then((response) => {
 					setResults(response.data.data);
 					setPage(1);
 					setLoading(false);
 				})
-				.catch(_error => {
+				.catch((_error) => {
 					setResults([]);
 					setPage(1);
 					setLoading(false);
@@ -33,4 +33,4 @@ export default ({ word, endpoint }) => {
 		}
 	}, [endpoint, token, word]);
 	return { loading, results, page, setPage };
-}
+};

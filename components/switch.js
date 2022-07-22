@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styles from '../styles/switch.module.css';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Switch = ({ value, onChange, disabled }) => {
 	return (
@@ -9,10 +9,7 @@ const Switch = ({ value, onChange, disabled }) => {
 			data-state={disabled ? 'disabled' : null}
 			onClick={() => !disabled && onChange(!value)}
 		>
-			<div
-				className={styles.switch__key}
-				data-value={value ? 'on' : 'off'}
-			/>
+			<div className={styles.switch__key} data-value={value ? 'on' : 'off'} />
 			<div className={styles.switch__lock} />
 		</div>
 	);
@@ -21,11 +18,11 @@ const Switch = ({ value, onChange, disabled }) => {
 Switch.propTypes = {
 	value: PropTypes.bool.isRequired,
 	onChange: PropTypes.func.isRequired,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
 };
 
 Switch.defaultProps = {
-	disabled: false
+	disabled: false,
 };
 
 export default Switch;

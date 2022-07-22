@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import lookie from 'lookie';
+import { useState, useEffect } from 'react';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
@@ -9,8 +9,7 @@ export default () => {
 		const allowDetectClipboardFromLocalStorage = lookie.get('allowDetectClipboard');
 		if (allowDetectClipboardFromLocalStorage !== null)
 			setDetectClipboard(allowDetectClipboardFromLocalStorage);
-		else
-			lookie.set('allowDetectClipboard', true)
+		else lookie.set('allowDetectClipboard', true);
 	}, []);
 	useEffect(() => lookie.set('allowDetectClipboard', detectClipboard), [detectClipboard]);
 	// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,7 +17,7 @@ export default () => {
 		if (navigator) {
 			const permissionResult = await navigator.permissions.query({
 				name: 'clipboard-read',
-				allowWithoutGesture: false
+				allowWithoutGesture: false,
 			});
 			if (!(permissionResult.state === 'granted' || permissionResult.state === 'prompt')) {
 				setDetectClipboard(false);
@@ -28,10 +27,10 @@ export default () => {
 			setDetectClipboard(false);
 			setDetectClipboardIsBlocked(true);
 		}
-	}, [])
+	}, []);
 	return {
 		detectClipboard,
 		setDetectClipboard,
-		detectClipboardIsBlocked
-	}
-}
+		detectClipboardIsBlocked,
+	};
+};

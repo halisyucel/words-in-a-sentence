@@ -1,9 +1,9 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import Layout from '../components/layout';
 import Input from '../components/input';
+import Layout from '../components/layout';
 import Title from '../components/title';
 import styles from '../styles/home.module.css';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 const Home = () => {
 	const router = useRouter();

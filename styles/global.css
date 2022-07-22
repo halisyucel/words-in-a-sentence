@@ -1,39 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Signika:wght@300;400;500;600;700&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
 :root {
-    --color-text-primary: #ffffff;
-    --color-text-secondary: #000000;
-    --color-text-tertiary: rgba(0, 0, 0, 0.25);
-    --color-background-primary: #2a2a35;
-    --color-background-secondary: #dddddd;
-    --color-background-tertiary: #454545;
-    --color-button-default: #e0e0e0;
-    --color-success: #00b300;
-    --color-warning: #ffc107;
-    --color-error: #c81d27;
-    --color-info: #2196f3;
-    --color-translation-text: #68a4e3;
-    --color-tureng: #c81d27;
-    --color-vip: #3469a5;
-    --color-yourdictionary: #1976d2;
-    --pacifico: 'Pacifico', cursive;
-    --signika: 'Signika', sans-serif;
-    --work-sans: 'Work Sans', sans-serif;
+	--color-text-primary: #ffffff;
+	--color-text-secondary: #000000;
+	--color-text-tertiary: rgba(0, 0, 0, 0.25);
+	--color-background-primary: #2a2a35;
+	--color-background-secondary: #dddddd;
+	--color-background-tertiary: #454545;
+	--color-button-default: #e0e0e0;
+	--color-success: #00b300;
+	--color-warning: #ffc107;
+	--color-error: #c81d27;
+	--color-info: #2196f3;
+	--color-translation-text: #68a4e3;
+	--color-tureng: #c81d27;
+	--color-vip: #3469a5;
+	--color-yourdictionary: #1976d2;
+	--pacifico: 'Pacifico', cursive;
+	--signika: 'Signika', sans-serif;
+	--work-sans: 'Work Sans', sans-serif;
 }
 body {
-    background-color: var(--color-background-primary);
-    height: 100vh;
-    min-height: 100vh;
+	background-color: var(--color-background-primary);
+	height: 100vh;
+	min-height: 100vh;
 }
 #__next {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 .dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--color-text-primary);
-    margin: 0 8px;
+	margin: 0 8px;
+	border-radius: 50%;
+	background-color: var(--color-text-primary);
+	width: 5px;
+	height: 5px;
 }

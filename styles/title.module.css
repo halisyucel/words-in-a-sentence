@@ -1,26 +1,26 @@
 .title {
-    font-family: 'Pacifico', cursive;
-    font-size: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-bottom: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	margin-bottom: 1.5rem;
+	font-size: 3rem;
+	font-family: 'Pacifico', cursive;
 }
 .title > img {
-    height: 2rem;
-    margin-left: 1rem;
-    border-radius: 5px;
+	margin-left: 1rem;
+	border-radius: 5px;
+	height: 2rem;
 }
 .title > a {
-    color: #ffffff;
-    text-decoration: none;
+	color: #ffffff;
+	text-decoration: none;
 }
 .title > a:hover {
-    color: #ffffff;
+	color: #ffffff;
 }
-.title[data-size="small"] {
-    font-size: 2rem;
+.title[data-size='small'] {
+	font-size: 2rem;
 }
-.title[data-size="small"] > img {
-    height: 1.5rem;
+.title[data-size='small'] > img {
+	height: 1.5rem;
 }

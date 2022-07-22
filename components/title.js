@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
 import styles from '../styles/title.module.css';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Title = ({ className, style, size }) => {
 	return (
@@ -10,7 +10,7 @@ const Title = ({ className, style, size }) => {
 				<a>words in a sentence</a>
 			</Link>
 			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img src={'/flag.svg'} alt={'TR'}/>
+			<img src={'/flag.svg'} alt={'TR'} />
 		</div>
 	);
 };
@@ -18,13 +18,13 @@ const Title = ({ className, style, size }) => {
 Title.propTypes = {
 	className: PropTypes.string,
 	style: PropTypes.object,
-	size: PropTypes.string
+	size: PropTypes.string,
 };
 
 Title.defaultProps = {
 	className: '',
 	style: {},
-	size: 'normal'
+	size: 'normal',
 };
 
 export default Title;

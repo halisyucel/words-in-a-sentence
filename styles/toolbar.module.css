@@ -1,30 +1,30 @@
 .toolbar {
-    font-family: var(--signika);
-    font-weight: 300;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-weight: 300;
+	font-size: 1.5rem;
+	font-family: var(--signika);
 }
 .toolbar__text__highlight {
-    font-weight: 700;
+	font-weight: 700;
 }
 .toolbar__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 2rem;
-    cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 2rem;
+	width: 2rem;
+	height: 2rem;
 }
 .toolbar__button:hover {
-    color: var(--color-text-secondary);
-    background-color: var(--color-background-secondary);
+	background-color: var(--color-background-secondary);
+	color: var(--color-text-secondary);
 }
 @media (max-width: 768px) {
-    .toolbar__text {
-        font-size: 1.2rem;
-    }
+	.toolbar__text {
+		font-size: 1.2rem;
+	}
 }

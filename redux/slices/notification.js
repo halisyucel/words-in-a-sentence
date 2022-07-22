@@ -15,7 +15,7 @@ export const notificationSlice = createSlice({
 					position: action.payload.position || state[action.payload.id].position,
 					button: action.payload.button || state[action.payload.id].button,
 					buttonText: action.payload.buttonText || state[action.payload.id].buttonText,
-					buttonHref: action.payload.buttonHref || state[action.payload.id].buttonHref
+					buttonHref: action.payload.buttonHref || state[action.payload.id].buttonHref,
 				};
 			} else {
 				state[action.payload.id] = {
@@ -28,7 +28,7 @@ export const notificationSlice = createSlice({
 					buttonHref: action.payload.buttonHref || null,
 				};
 			}
-		}
+		},
 	},
 });
 

@@ -1,14 +1,10 @@
-import React from 'react';
 import styles from '../styles/footer.module.css';
+import React from 'react';
 
 const Footer = () => {
 	return (
 		<div className={styles.footer}>
-			<a
-				href={'https://halisyucel.me'}
-				target={'_blank'}
-				rel={'noreferrer'}
-			>
+			<a href={'https://halisyucel.me'} target={'_blank'} rel={'noreferrer'}>
 				halis yücel
 			</a>
 			<a

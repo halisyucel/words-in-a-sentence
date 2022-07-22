@@ -1,18 +1,18 @@
 .home {
-    width: 30rem;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	width: 30rem;
 }
 @media (max-width: 768px) {
-    .home {
-        width: 90%;
-    }
-    .home__title {
-        font-size:2rem;
-    }
-    .home__title > img {
-        height: 1.5rem;
-    }
+	.home {
+		width: 90%;
+	}
+	.home__title {
+		font-size: 2rem;
+	}
+	.home__title > img {
+		height: 1.5rem;
+	}
 }

@@ -1,25 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from '../styles/settings.module.css';
-import { FaTimes } from 'react-icons/fa';
-import { BsGripVertical, BsEye, BsEyeSlash } from 'react-icons/bs';
-import Switch from './switch';
 import useComponentsSettings from '../hooks/useComponentsSettings';
 import useDetectClipboardSettings from '../hooks/useDetectClipboardSettings';
+import styles from '../styles/settings.module.css';
+import Switch from './switch';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { BsGripVertical, BsEye, BsEyeSlash } from 'react-icons/bs';
+import { FaTimes } from 'react-icons/fa';
 
 const Settings = ({ visibility, onVisibility }) => {
-	const { detectClipboard, setDetectClipboard, detectClipboardIsBlocked } = useDetectClipboardSettings();
-	const { components, setVisibility, dragItem, setDragItem } = useComponentsSettings()
+	const { detectClipboard, setDetectClipboard, detectClipboardIsBlocked } =
+		useDetectClipboardSettings();
+	const { components, setVisibility, dragItem, setDragItem } = useComponentsSettings();
 	return (
-		<div
-			className={styles.settings}
-			style={{ display: visibility ? 'flex' : 'none' }}
-		>
+		<div className={styles.settings} style={{ display: visibility ? 'flex' : 'none' }}>
 			<div className={styles.settings__box}>
 				<div className={styles.settings__box__title}>
-					<div className={styles.settings__box__title__text}>
-						Settings
-					</div>
+					<div className={styles.settings__box__title__text}>Settings</div>
 					<div
 						className={styles.settings__box__title__close}
 						onClick={() => onVisibility(false)}
@@ -44,45 +40,57 @@ const Settings = ({ visibility, onVisibility }) => {
 					/>
 				</div>
 				<div className={styles.settings__box__list}>
-					{Object.values(components).sort((x,y) => x.index - y.index).map(item => {
-						return (
-							<div
-								key={item.name}
-								className={styles.settings__box__list__item__wrapper}
-								aria-label={Object.keys(components).length === item.index ? 'last' : null}
-							>
+					{Object.values(components)
+						.sort((x, y) => x.index - y.index)
+						.map((item) => {
+							return (
 								<div
-									className={styles.settings__box__list__item}
-									aria-disabled={!(dragItem.name === item.name && dragItem.active)}
-									aria-label={item.fade ? 'fade' : null}
-									style={dragItem.name === item.name && dragItem.active ? { top: dragItem.top } : null}
+									key={item.name}
+									className={styles.settings__box__list__item__wrapper}
+									aria-label={
+										Object.keys(components).length === item.index
+											? 'last'
+											: null
+									}
 								>
 									<div
-										className={styles.settings__box__list__item__move}
-										onMouseDown={(e) => {
-											setDragItem({
-												active: true,
-												name: item.name,
-												top: 0,
-												originTop: e.clientY
-											})
-										}}
+										className={styles.settings__box__list__item}
+										aria-disabled={
+											!(dragItem.name === item.name && dragItem.active)
+										}
+										aria-label={item.fade ? 'fade' : null}
+										style={
+											dragItem.name === item.name && dragItem.active
+												? { top: dragItem.top }
+												: null
+										}
 									>
-										<BsGripVertical />
-									</div>
-									<div className={styles.settings__box__list__item__text}>
-										{item.text}
-									</div>
-									<div
-										className={styles.settings__box__list__item__visibility}
-										onClick={() => setVisibility({ name: item.name })}
-									>
-										{item.visible ? <BsEye /> : <BsEyeSlash />}
+										<div
+											className={styles.settings__box__list__item__move}
+											onMouseDown={(e) => {
+												setDragItem({
+													active: true,
+													name: item.name,
+													top: 0,
+													originTop: e.clientY,
+												});
+											}}
+										>
+											<BsGripVertical />
+										</div>
+										<div className={styles.settings__box__list__item__text}>
+											{item.text}
+										</div>
+										<div
+											className={styles.settings__box__list__item__visibility}
+											onClick={() => setVisibility({ name: item.name })}
+										>
+											{item.visible ? <BsEye /> : <BsEyeSlash />}
+										</div>
 									</div>
 								</div>
-							</div>
-						);
-					})}
+							);
+						})}
 				</div>
 			</div>
 		</div>

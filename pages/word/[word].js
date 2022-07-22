@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { settingsToElement } from '../../lib/pages/[word]';
-import { setToken } from '../../redux/slices/settings';
 import Layout from '../../components/layout';
 import Toolbar from '../../components/toolbar';
 import useClipboard from '../../hooks/useClipboard';
+import { settingsToElement } from '../../lib/pages/[word]';
+import { setToken } from '../../redux/slices/settings';
 import jwt from 'jsonwebtoken';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Word = ({ word, token }) => {
 	const dispatch = useDispatch();
@@ -16,19 +16,24 @@ const Word = ({ word, token }) => {
 		<Layout style={{ padding: '1rem' }}>
 			<Toolbar word={word} />
 			{Object.values(settings.components)
-				.filter(item => item.visible)
+				.filter((item) => item.visible)
 				.sort((a, b) => a.index - b.index)
-				.map(item => settingsToElement({
-					name: item.name,
-					key: item.index,
-					word: word
-				}))}
+				.map((item) =>
+					settingsToElement({
+						name: item.name,
+						key: item.index,
+						word: word,
+					}),
+				)}
 		</Layout>
 	);
 };
 
 const getServerSideProps = async ({ params }) => {
-	const token = jwt.sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60) }, process.env.JWT_SECRET);
+	const token = jwt.sign(
+		{ exp: Math.floor(Date.now() / 1000) + 60 * 60 },
+		process.env.JWT_SECRET,
+	);
 	return { props: { word: params.word, token } };
 };
 

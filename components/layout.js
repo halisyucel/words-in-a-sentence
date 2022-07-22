@@ -1,21 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import styles from '../styles/layout.module.css';
+import Footer from './footer';
 import Header from './header';
-import PropTypes from 'prop-types';
 import Notification from './notification';
 import Head from 'next/head';
-import Footer from './footer';
-import styles from '../styles/layout.module.css';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Layout = ({ children, style, header }) => {
-	const notification = useSelector(state => state.notification);
+	const notification = useSelector((state) => state.notification);
 	return (
 		<div className={styles.layout}>
 			<Head>
 				<title>Words in a Sentence &#127481;&#127479;</title>
 				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-				<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+				<meta
+					name="viewport"
+					content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+				/>
 				<meta name="description" content={'Words in a Sentence'} />
 				<meta name="keywords" content="words, sentence, word, in, sentence" />
 				<meta name="robots" content="noindex, nofollow" />
@@ -49,8 +52,10 @@ const Layout = ({ children, style, header }) => {
 				<meta name="msapplication-starturl" content="/" />
 			</Head>
 			{header && <Header />}
-			<div style={style} className={styles.layout__body}>{children}</div>
-			{Object.keys(notification).map(key => (
+			<div style={style} className={styles.layout__body}>
+				{children}
+			</div>
+			{Object.keys(notification).map((key) => (
 				<Notification
 					id={key}
 					key={key}
@@ -76,7 +81,7 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
 	style: {},
-	header: true
+	header: true,
 };
 
 export default Layout;

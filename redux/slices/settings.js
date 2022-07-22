@@ -3,24 +3,24 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	token: null,
 	components: {
-		'tureng': {
+		tureng: {
 			index: 1,
 			name: 'tureng',
 			text: 'tureng.com',
-			visible: true
+			visible: true,
 		},
-		'vip': {
+		vip: {
 			index: 2,
 			name: 'vip',
 			text: 'vipingilizce.net',
 			visible: true,
 		},
-		'yourdictionary': {
+		yourdictionary: {
 			index: 3,
 			name: 'yourdictionary',
 			text: 'yourdictionary.com',
 			visible: true,
-		}
+		},
 	},
 };
 
@@ -40,7 +40,7 @@ export const settingsSlice = createSlice({
 		},
 		setToken: (state, action) => {
 			state.token = action.payload;
-		}
+		},
 	},
 });
 
@@ -48,7 +48,7 @@ export const {
 	setComponentIndex,
 	setComponentVisibility,
 	setComponentsFromLocalStorage,
-	setToken
+	setToken,
 } = settingsSlice.actions;
 
 export default settingsSlice.reducer;
