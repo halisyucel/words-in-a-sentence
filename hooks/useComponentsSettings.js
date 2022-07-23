@@ -26,8 +26,15 @@ export default () => {
 			visible: true,
 			fade: false,
 		},
-		yourdictionary: {
+		merriamwebster: {
 			index: 3,
+			name: 'merriamwebster',
+			text: 'merriam-webster.com',
+			visible: true,
+			fade: false,
+		},
+		yourdictionary: {
+			index: 4,
 			name: 'yourdictionary',
 			text: 'yourdictionary.com',
 			visible: true,
