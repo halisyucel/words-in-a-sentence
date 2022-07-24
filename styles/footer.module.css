@@ -6,17 +6,25 @@
 	padding: 0.5rem;
 	width: 100%;
 	font-weight: 300;
-	font-size: 0.8rem;
+	font-size: .8rem;
 	font-family: var(--work-sans);
 }
-.footer > a {
+/* .footer > a {
 	color: var(--color-text-primary);
 	text-decoration: unset;
+} */
+
+.footer__github {
+	margin-right: .25rem;
 }
-.footer > a:first-child {
-	margin-right: 0.5rem;
+.footer__creator {
+	margin-left: .25rem;
 }
-.footer > a:first-child::after {
-	margin-left: 0.5rem;
-	content: '-';
+.footer__creator, .footer__github {
+	display: flex;
+}
+.footer__creator > a, .footer__github > a {
+	font-weight: 500;
+	color: #ffffff;
+	text-decoration: none;
 }
