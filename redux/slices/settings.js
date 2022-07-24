@@ -42,7 +42,9 @@ export const settingsSlice = createSlice({
 			state.components[action.payload.name].visible = action.payload.visible;
 		},
 		setComponentsFromLocalStorage: (state, action) => {
-			state.components = action.payload;
+			for (const componentName of Object.keys(action.payload)) {
+				state.components[componentName] = action.payload[componentName];	
+			}
 		},
 		setToken: (state, action) => {
 			state.token = action.payload;
