@@ -15,22 +15,14 @@ const Layout = ({ children, style, header }) => {
 				<title>Words in a Sentence &#127481;&#127479;</title>
 				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-				<meta
-					name="viewport"
-					content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" />
 				<meta name="description" content={'Words in a Sentence'} />
 				<meta name="keywords" content="words, sentence, word, in, sentence" />
 				<meta name="robots" content="index, follow" />
 				
 				<link rel="manifest" href="/manifest.json" />
-				<link rel="apple-touch-icon" href="/icon-128x128.png" />
-				<link rel="icon" href="/icon-48x48.png" type={'image/png'} sizes={'48x48'} />
-				<link rel="icon" href="/icon-72x72.png" type={'image/png'} sizes={'72x72'} />
-				<link rel="icon" href="/icon-96x96.png" type={'image/png'} sizes={'96x96'} />
-				<link rel="icon" href="/icon-128x128.png" type={'image/png'} sizes={'128x128'} />
+				<link rel="apple-touch-icon" href="/icon-144x144.png" />
 				<link rel="icon" href="/icon-144x144.png" type={'image/png'} sizes={'144x144'} />
-				<link rel="icon" href="/icon-152x152.png" type={'image/png'} sizes={'152x152'} />
 				<link rel="icon" href="/icon-192x192.png" type={'image/png'} sizes={'192x192'} />
 				<link rel="icon" href="/icon-384x384.png" type={'image/png'} sizes={'384x384'} />
 				<link rel="icon" href="/icon-512x512.png" type={'image/png'} sizes={'512x512'} />
@@ -56,7 +48,7 @@ const Layout = ({ children, style, header }) => {
 				{/* windows */}
 				<meta name="msapplication-navbutton-color" content={'#f68177'} />
 				<meta name="msapplication-TileColor" content={'#f68177'} />
-				<meta name="msapplication-TileImage" content={'/icon-128x128.png'} />
+				<meta name="msapplication-TileImage" content={'/icon-144x144.png'} />
 				{/* pinned sites */}
 				<meta name="application-name" content={'Words in a Sentence'} />
 				<meta name="msapplication-tooltip" content={'Words in a Sentence'} />

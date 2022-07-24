@@ -39,3 +39,7 @@ yarn-error.log*
 
 # yarn
 yarn.lock
+
+# pwa
+/public/sw.js
+/public/workbox*

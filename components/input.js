@@ -22,7 +22,7 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 		if (inputId !== '') setValue(document.getElementById(inputId).value);
 	}, [inputId]);
 	return (
-		<div className={`${styles.search} ${className}`.trim()} style={style}>
+		<label className={`${styles.search} ${className}`.trim()} style={style}>
 			<input
 				data-size={size}
 				id={inputId === '' ? null : inputId}
@@ -51,7 +51,7 @@ const Input = ({ className, placeholder, onSubmit, size, style }) => {
 			<div data-size={size} className={styles.search__icon} onClick={submit}>
 				<FiSearch />
 			</div>
-		</div>
+		</label>
 	);
 };
 

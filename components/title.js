@@ -10,7 +10,12 @@ const Title = ({ className, style, size }) => {
 				<a>words in a sentence</a>
 			</Link>
 			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img src={'/flag.svg'} alt={'TR'} />
+			<img 
+				src={'/flag.svg'} 
+				alt={'TR'}
+				width={'42'}
+				height={'32'}	
+			/>
 		</div>
 	);
 };
