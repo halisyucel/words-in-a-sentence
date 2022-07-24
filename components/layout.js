@@ -22,30 +22,41 @@ const Layout = ({ children, style, header }) => {
 				<meta name="description" content={'Words in a Sentence'} />
 				<meta name="keywords" content="words, sentence, word, in, sentence" />
 				<meta name="robots" content="index, follow" />
-				<link rel="icon" type="image/x-icon" href={'/favicon.png'} />
+				
+				<link rel="manifest" href="/manifest.json" />
+				<link rel="apple-touch-icon" href="/icon-128x128.png" />
+				<link rel="icon" href="/icon-48x48.png" type={'image/png'} sizes={'48x48'} />
+				<link rel="icon" href="/icon-72x72.png" type={'image/png'} sizes={'72x72'} />
+				<link rel="icon" href="/icon-96x96.png" type={'image/png'} sizes={'96x96'} />
+				<link rel="icon" href="/icon-128x128.png" type={'image/png'} sizes={'128x128'} />
+				<link rel="icon" href="/icon-144x144.png" type={'image/png'} sizes={'144x144'} />
+				<link rel="icon" href="/icon-152x152.png" type={'image/png'} sizes={'152x152'} />
+				<link rel="icon" href="/icon-192x192.png" type={'image/png'} sizes={'192x192'} />
+				<link rel="icon" href="/icon-384x384.png" type={'image/png'} sizes={'384x384'} />
+				<link rel="icon" href="/icon-512x512.png" type={'image/png'} sizes={'512x512'} />
 				{/* open graph */}
 				<meta property="og:title" content={'Words in a Sentence'} />
 				<meta property="og:site_name" content={'Words in a Sentence'} />
 				<meta property="og:url" content={'https://words-in-a-sentence-tr.vercel.app/'} />
 				<meta property="og:description" content={'Words in a Sentence'} />
 				<meta property="og:type" content="website" />
-				<meta property="og:image" content={'/card.jpg'} />
+				<meta property="og:image" content={'/ogimage.jpg'} />
 				{/* twitter card */}
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:title" content={'Words in a Sentence'} />
 				<meta name="twitter:description" content={'Words in a Sentence'} />
-				<meta name="twitter:image" content={'/card.jpg'} />
+				<meta name="twitter:image" content={'/ogimage.jpg'} />
 				{/* android */}
-				<meta name="theme-color" content={'#ffff7f'} />
+				<meta name="theme-color" content={'#f68177'} />
 				<meta name="mobile-web-app-capable" content="yes" />
 				{/* ios */}
 				<meta name="apple-mobile-web-app-title" content={'Words in a Sentence'} />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 				{/* windows */}
-				<meta name="msapplication-navbutton-color" content={'#ffff7f'} />
-				<meta name="msapplication-TileColor" content={'#ffff7f'} />
-				<meta name="msapplication-TileImage" content={'/favicon.png'} />
+				<meta name="msapplication-navbutton-color" content={'#f68177'} />
+				<meta name="msapplication-TileColor" content={'#f68177'} />
+				<meta name="msapplication-TileImage" content={'/icon-128x128.png'} />
 				{/* pinned sites */}
 				<meta name="application-name" content={'Words in a Sentence'} />
 				<meta name="msapplication-tooltip" content={'Words in a Sentence'} />
