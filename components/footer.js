@@ -17,7 +17,7 @@ const Footer = () => {
 			&#8226;
 			<div className={styles.footer__creator}>
 				Created by&nbsp;
-				<a href={'https://halisyucel.me'} target={'_blank'} rel={'noreferrer'}>
+				<a href={'https://halisyucel.dev'} target={'_blank'} rel={'noreferrer'}>
 					Halis Yücel
 				</a>
 			</div>
